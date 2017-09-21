@@ -35,3 +35,26 @@ Part of the confusion comes from the initial line:
 
 So we're talking about a JSON data source for the basket state, but so far have not discussed one for the inventory state. We need the both in order to run the quantity validation rule discussed.
 
+
+"Inventory" vs "Catalog"
+========================
+
+There's two terms here, which could mean different things, but in this case, probably do not.
+
+So we know that there's some notion of a "product type"; instances of these are "Apple" and "Banana". These in turn have a defined price.
+
+Since we're talking about a grocery store, instances of these product types are more than likely indistinguishable. When we sell an apple, we don't care *which* apple we sell; just that a *quantity* of apples was sold.
+
+So, the "inventory" for the store might look like this:
+
+    { 
+        products: [
+            name: "apple"
+            price: 0.98
+            quantity: 31
+        ]
+    }
+
+In this case, there's no need for the term "Catalog", and so it should probably be replaced to avoid confusion/ambiguity.
+
+This isn't necessarily the case for all apps. If you were selling cars for instance, each instance has some relevant properties that need tracking. (ex: VIN). In this case, you might have a "Catalog" that tracks which *types* of products are available, and an "Inventory" which tracks the individual cases of each product type. In this case, "quanity" wouldn't be a stored property (in a normalized system), but a calculated one.
