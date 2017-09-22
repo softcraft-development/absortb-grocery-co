@@ -1,5 +1,5 @@
 Notes on the Customer Basket
-----------------------------
+============================
 
 See also: /api/notes.md for some discussion on "Basket" vs "Inventory".
 

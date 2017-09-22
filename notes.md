@@ -1,8 +1,8 @@
-General Notes
--------------
-
 Display
 =======
+
+Text Fields
+-----------
 
     A read-only text field to show the name of the product
 
