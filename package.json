@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/softcraft-development/absortb-grocery-co#readme",
   "devDependencies": {
+    "eslint": "^4.7.2",
     "eslint-plugin-jasmine": "^2.8.4",
     "jasmine": "^2.8.0"
   }
