@@ -47,8 +47,3 @@ Internationalization
 
 I'm hardcoding text strings into the HTML & JS since this is a simple programming challenge in Vanilla JS. In real-world apps, I prefer to build in internationalization capability from the start. (The Intl JS library, Format.js, and react-intl all do a good job of this.) It's much easier to pay attention to internationalization concerns from the start than it is to retrofit after the fact. However, for this particular project, that's just extra work.
 
-JavaScript Compatibility
-------------------------
-
-I'm going to use widely-available ES6-compatible features (ex: classes) for developer convenience. We don't have any information about what browsers we're planning on supporting, so it'd only be extra work to try and go out of our way to support non-ES6 browsers like Internet Explorer. In a real-world app, I'd more likely be using a transpiler (probably TypeScript) to write advanced JS/TS that's also backwards-compatible. Again, for this app, that's unnecessary; we're trying to keep it as vanilla as possible.
-
