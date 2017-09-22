@@ -97,7 +97,4 @@ I show some examples of this in inventory.json
 promotions.json
 ===============
 
-Lots of potential for functional enhancement here, but I'm keeping it simple until otherwise required.
-
-* We'll assume that each promotion is a fixed-price-per-item, not a percentage discount, buy X get Y free, etc.
-* We'll assume that there's only 1 promotion per product, although the data structure doesn't require this to be true. Multiple promotions per product don't really make sense when they're just price adjustments.
+There's lots of opportunity for additional functionality & more flexible architecture here, if the requirements (or future requirements) necessitate them. For instance: "group" promotions have a "price" field, while "additionalProduct" promotions have a "discount" field. It may make sense for either/both of these promotion types to be able to choose from "price" or "discount" -based price alterations. Since there's no requirement to do so now, nor is there any concept of future functionality, I'll Keep It Simple for this project.
