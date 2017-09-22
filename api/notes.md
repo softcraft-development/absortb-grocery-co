@@ -56,3 +56,26 @@ So, the "inventory" for the store might look like this:
 In this case, there's no need for the term "Catalog", and so it should probably be replaced to avoid confusion/ambiguity.
 
 This isn't necessarily the case for all apps. If you were selling cars for instance, each instance has some relevant properties that need tracking. (ex: VIN). In this case, you might have a "Catalog" that tracks which *types* of products are available, and an "Inventory" which tracks the individual cases of each product type. In this case, "quanity" wouldn't be a stored property (in a normalized system), but a calculated one.
+
+JSON Envelopes
+==============
+
+Although this is a topic of some debate, I prefer to wrap my JSON data structures in an "envelope" of a named property -- even if there's only a single property in the entire response body. This is for future extensibility; it's really easy to add different types of data into the response down the road when they're each identified by unique property names. 
+
+So for example, in inventory.json, I have:
+
+    { products: [ "apple", "banana"  ] }
+
+We could technically drop the envelope and just return the product array:
+
+    { [ "apple", "banana" ] }
+
+However, if we need to add in more data of a differen type, we *must* include the envelope so that we can differentiate between the two data sets with property names:
+
+    { products: ["apple", "banana"], promotions: [{productId: "banana", discount: 0.1}] }
+
+If we didn't already have the envelope, we'd have to recode the part that handles the response. If we have it from the start, then we just have to deal with (or ignore) an additional property.
+
+This is especially important when using a Redux-based front-end, where the data needs to be normalized (and, in practice, flattened). It's really convenient when the Redux state can correspond 1:1 with the API responses (which in turn often correspond 1:1 with the database tables anyway). 
+
+
