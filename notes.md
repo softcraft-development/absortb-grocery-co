@@ -41,3 +41,8 @@ The mockup has the controls laid out in what appears to be a grid. Notably, the 
 Grids don't respond well to different screen sizes, as they don't allow / promote wrapping of fields with the available width shrinks. With static mockups, it's easy to overlook this fact. Tou can lay out a grid that looks good given the size that you've chosen, but you can't (generally) reshape the mockup window to see how the layout behaves under different widths. 
 
 In order to illustrate a responsive design, I'm going to create a layout that isn't fixed into the grid model, while still providing good UX.
+
+Internationalization
+--------------------
+
+I'm hardcoding text strings into the HTML & JS since this is a simple programming challenge in Vanilla JS. In real-world apps, I prefer to build in internationalization capability from the start. (The Intl JS library, Format.js, and react-intl all do a good job of this.) It's much easier to pay attention to internationalization concerns from the start than it is to retrofit after the fact. However, for this particular project, that's just extra work.
