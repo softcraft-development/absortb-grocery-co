@@ -32,3 +32,12 @@ Instead, if you allow them to enter any data, but display a validation message w
 This tactic also works for other kinds of validation errors. What if the user enters nonnumeric characters? Display an error message vs reject all of those keystrokes?
 
 The "display validation message on field error" technique is also standard practice on the web, and so implementing this meets users' general expectations on how forms work.
+
+Basket Form Layout
+------------------
+
+The mockup has the controls laid out in what appears to be a grid. Notably, the "quantity" label exists once, above a column of quantity fields. 
+
+Grids don't respond well to different screen sizes, as they don't allow / promote wrapping of fields with the available width shrinks. With static mockups, it's easy to overlook this fact. Tou can lay out a grid that looks good given the size that you've chosen, but you can't (generally) reshape the mockup window to see how the layout behaves under different widths. 
+
+In order to illustrate a responsive design, I'm going to create a layout that isn't fixed into the grid model, while still providing good UX.
