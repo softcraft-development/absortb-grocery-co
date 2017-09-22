@@ -4,8 +4,8 @@ Absorb.GroceryCo.Checkout.ErrorHandling = class {
 
         const $notifications = document.getElementById("notifications");
         if ($notifications) {
-            const notification = new Absorb.GroceryCo.Checkout.Notification(String(reason), 'error');
+            const notification = new Absorb.GroceryCo.Checkout.Notification(String(reason), "error");
             Absorb.GroceryCo.Checkout.Notifications.add(notification);
         }
     }
-}
+};
