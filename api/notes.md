@@ -94,3 +94,10 @@ My rationale is this:
 
 I show some examples of this in inventory.json
 
+promotions.json
+===============
+
+Lots of potential for functional enhancement here, but I'm keeping it simple until otherwise required.
+
+* We'll assume that each promotion is a fixed-price-per-item, not a percentage discount, buy X get Y free, etc.
+* We'll assume that there's only 1 promotion per product, although the data structure doesn't require this to be true. Multiple promotions per product don't really make sense when they're just price adjustments.
