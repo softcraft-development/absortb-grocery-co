@@ -7,7 +7,9 @@
     "globals": {
         "Absorb": true
     },
-    "plugins": ["jasmine"],
+    "plugins": [
+        "jasmine"
+    ],
     "rules": {
         "no-const-assign": "error",
         "no-this-before-super": "error",
@@ -15,6 +17,8 @@
         "no-unreachable": "error",
         "no-unused-vars": "error",
         "constructor-super": "error",
+        "semi": "error",
+        "quotes": "error",
         "valid-typeof": "error"
     }
 }
