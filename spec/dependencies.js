@@ -1,3 +1,5 @@
+/* global require */
+// eslint-disable-next-line no-undef
 window = global;
 require("../src/js/namespace.js");
 require("../src/js/notification.js");
