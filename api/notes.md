@@ -78,4 +78,19 @@ If we didn't already have the envelope, we'd have to recode the part that handle
 
 This is especially important when using a Redux-based front-end, where the data needs to be normalized (and, in practice, flattened). It's really convenient when the Redux state can correspond 1:1 with the API responses (which in turn often correspond 1:1 with the database tables anyway). 
 
+Object identifiers
+==================
+
+When I'm designing APIs and front-ends, I like to make sure that I use arbitrary strings as identifiers (possibly to the point of converting numeric IDs from an API I don't control into strings for storage client-side).
+
+My rationale is this:
+* Strings can hold anything, even "numbers". They're future-proof.
+* Strings can be human-friendly / descriptive. Numbers usually aren't.
+* Strings can be made to be hard to guess, if appropriate. 
+  * Numbers can too, but they often *aren't*. All too often, devs will just stick an auto-increment Primary Key on a table and then use that as the unique identifier everywhere in the system. This introduces two security risks:
+    * Hackers can guess IDs, and thus probe for information based on that ID. (Hopefully you're not relying on ID obscurity for your security, but you don't have to make it easy for anyone.)
+    * Incremental IDs do leak (possibly sensitive) information about the *quantity* of the given resource that's present in the system. (Ex: I know your minimum user count if I can see my own incremental user ID.)
+* Strings aren't as apt to run out of address space.
+
+I show some examples of this in inventory.json
 
