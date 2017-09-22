@@ -4,7 +4,7 @@ Jasmine
 Vanilla Jasmine
 ---------------
 
-When I'm doing real-world projects, I usually need to spend time adding in extra functionality on top of Jasmine to make testing more efficient and readable. Part of this is supporting a "Given When Then" syntax. There's other features inspired by rSpec that I usually end up reimplementing too. I'm not doing any of that here in the interest of time. Jasmine's "describe" syntax is OK enough for this project.
+When I'm doing real-world projects, I usually need to spend time adding in extra functionality on top of Jasmine to make testing more efficient and readable. Part of this is supporting a "Given When Then" syntax. There's other features inspired by rSpec that I usually end up reimplementing too. These enhancements often make the test descriptions/structure flow more smoothly and help eliminate code duplication. I'm not doing any of that here in the interest of time. Jasmine's "describe" syntax is OK enough for this project.
 
 Test Data
 ---------
