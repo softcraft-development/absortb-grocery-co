@@ -11,3 +11,7 @@ Test Data
 
 In real-world projects, I like using randomized data and factories rather than hard-coding test data, or using fixtures. In this project, I'll just use hard-coded test cases in the interest of time.
 
+Paths & Dependencies
+--------------------
+
+Normally I'd be using ES6 modules/imports and a web app builder like Webpack to handle all of the filename resolution and dependency management. We don't have that here though, so I've added some quick & dirty workarounds in dependencies.js.
