@@ -8,7 +8,7 @@ describe("Absorb.GroceryCo.Checkout.Notification", function() {
         );
     });
 
-    describe("className", function() {
+    describe(".className", function() {
         beforeEach(function() {
             this.subject = this.instance.className;
         });
@@ -18,7 +18,7 @@ describe("Absorb.GroceryCo.Checkout.Notification", function() {
         });
     });
 
-    describe("message", function() {
+    describe(".message", function() {
         beforeEach(function() {
             this.subject = this.instance.message;
         });
@@ -28,18 +28,18 @@ describe("Absorb.GroceryCo.Checkout.Notification", function() {
         });
     });
 
-    describe("onDismiss", function() {
+    describe("onDismiss()", function() {
         beforeEach(function() {
 
         });
     });
 
-    describe("when render is called", function() {
+    describe("render()", function() {
         beforeEach(function() {
             this.result = this.instance.render();
         });
 
-        describe("the rendered element", function(){
+        describe("result", function(){
             beforeEach(function() {
                 this.subject = this.result;
             }); 
@@ -64,7 +64,7 @@ describe("Absorb.GroceryCo.Checkout.Notification", function() {
             this.instance.$el = this.dummy;
         });
         
-        describe("render", function() {
+        describe("render()", function() {
             beforeEach(function() {
                 this.result = this.instance.render();
             });
