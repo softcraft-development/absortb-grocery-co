@@ -29,12 +29,6 @@ describe("Absorb.GroceryCo.Checkout.Notification", function() {
     });
 
     describe("onDismiss()", function() {
-        beforeEach(function() {
-
-        });
-    });
-
-    describe("onDismiss()", function() {
         describe("when passed an event", function(){
             beforeEach(function() {
                 this.event = jasmine.createSpyObj("event", ["preventDefault"]);
@@ -66,6 +60,7 @@ describe("Absorb.GroceryCo.Checkout.Notification", function() {
 
     describe("render()", function() {
         beforeEach(function() {
+            this.onDismissSpy = spyOn(this.instance, "onDismiss");
             this.result = this.instance.render();
         });
 
@@ -130,8 +125,14 @@ describe("Absorb.GroceryCo.Checkout.Notification", function() {
                     expect(this.subject.innerText).toEqual("Dismiss");
                 });
 
-                it("assigns the onclick handler to onDismiss", function(){
-                    expect(this.subject.onclick).toBe(this.instance.onDismiss);
+                describe("when clicked", function(){
+                    beforeEach(function() {
+                        this.subject.click();
+                    });
+
+                    it("calls onDismiss", function(){
+                        expect(this.onDismissSpy).toHaveBeenCalledWith(jasmine.any(Event));
+                    });
                 });
             });
         });

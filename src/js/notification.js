@@ -30,7 +30,7 @@ Absorb.GroceryCo.Checkout.Notification = class {
             $dismiss.setAttribute("type", "button");
             $dismiss.className = "dismiss";
             $dismiss.innerText = "Dismiss";
-            $dismiss.onclick = this.onDismiss;
+            $dismiss.addEventListener("click", this.onDismiss.bind(this));
         }
 
         return this.$el;
