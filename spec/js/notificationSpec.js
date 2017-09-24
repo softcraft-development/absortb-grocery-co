@@ -34,6 +34,36 @@ describe("Absorb.GroceryCo.Checkout.Notification", function() {
         });
     });
 
+    describe("onDismiss()", function() {
+        describe("when passed an event", function(){
+            beforeEach(function() {
+                this.event = jasmine.createSpyObj("event", ["preventDefault"]);
+                this.result = this.instance.onDismiss(this.event);
+            });
+
+            it("prevents the default event behaviour", function(){
+                expect(this.event.preventDefault).toHaveBeenCalled();
+            });
+        });
+
+        describe("when there is a rendered element", function(){
+            beforeEach(function(){
+                this.$element = this.instance.render();
+                this.$sandbox = document.getElementById("jasmine-sandbox");
+                this.$sandbox.appendChild(this.$element);
+                this.result = this.instance.onDismiss();
+            });
+
+            it("removes the element from it's parent", function(){
+                expect(this.$sandbox.firstChild).toBeFalsy();
+            });
+
+            it("dereferences the element", function(){
+                expect(this.instance.$el).toBeFalsy();
+            });
+        });
+    });
+
     describe("render()", function() {
         beforeEach(function() {
             this.result = this.instance.render();
