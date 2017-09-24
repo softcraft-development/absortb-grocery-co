@@ -20,3 +20,8 @@ Paths & Dependencies
 --------------------
 
 Normally I'd be using ES6 modules/imports and a web app builder like Webpack to handle all of the filename resolution and dependency management. We don't have that here though, so I've added some quick & dirty workarounds in dependencies.js.
+
+Element className toContain
+---------------------------
+
+I'm checking for the presence of CSS classes using Jasmine's toContain() expectation. This is fragile, as it does a substring match. A more reliable solution would parse the `classes` attribute string into discreete CSS class names, then check all of these for a full match. The substring solution might incorrectly match a given class name that's *part* of the actual assigned class names of the element. Many Jasmine add-ons (ex: jasmine-jquery) already implement `className` parsing, and so I typically use those to do this sort of check. For this small project, I won't bother reimplementing this feature, and just be mindful of my class name expectations.
