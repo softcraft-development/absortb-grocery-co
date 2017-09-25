@@ -74,11 +74,11 @@ describe("Absorb.GroceryCo.Checkout.Notification", function() {
             });
 
             it("has the notification class", function() {
-                expect(this.subject.className).toContain("notification");
+                expect(this.subject.classList.contains("notification")).toEqual(true);
             });
 
             it("has the class from the className property", function() {
-                expect(this.subject.className).toContain(this.className);
+                expect(this.subject.classList.contains(this.className)).toEqual(true);
             });
 
             describe("first child", function() {
@@ -91,7 +91,7 @@ describe("Absorb.GroceryCo.Checkout.Notification", function() {
                 });
 
                 it("has the message class", function() {
-                    expect(this.subject.className).toContain("message");
+                    expect(this.subject.classList.contains("message")).toEqual(true);
                 });
                 
                 it("contains the message", function() {
@@ -113,7 +113,7 @@ describe("Absorb.GroceryCo.Checkout.Notification", function() {
                 });
 
                 it("has the dismiss class", function() {
-                    expect(this.subject.className).toContain("dismiss");
+                    expect(this.subject.classList.contains("dismiss")).toEqual(true);
                 });
 
                 it("has the dismiss text", function() {

@@ -18,17 +18,17 @@ Absorb.GroceryCo.Checkout.Notification = class {
     render() {
         if (!this.$el) {
             this.$el = document.createElement("div");
-            this.$el.className = "notification " + this.className;
+            this.$el.classList.add("notification", this.className);
 
             var $message = document.createElement("span");
             this.$el.appendChild($message);
-            $message.className = "message";
+            $message.classList.add("message");
             $message.innerText = this.message;
 
             var $dismiss = document.createElement("button");
             this.$el.appendChild($dismiss);
             $dismiss.setAttribute("type", "button");
-            $dismiss.className = "dismiss";
+            $dismiss.classList.add("dismiss");
             $dismiss.innerText = "Dismiss";
             $dismiss.addEventListener("click", this.onDismiss.bind(this));
         }
