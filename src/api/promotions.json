@@ -1,11 +1,10 @@
 {
     "promotions": [
         {
-            "discount": 0.5,
-            "id": "orange-b1ghalf",
-            "quantity": 1,
+            "id": "orange-sale",
             "productId": "orange",
-            "type": "additionalProduct"
+            "price": 1,
+            "type": "sale"
         },
         {
             "id": "apple-buy-3-for-2",
