@@ -5,7 +5,12 @@
         "jasmine": true
     },
     "globals": {
-        "Absorb": true
+        "Absorb": true,
+        "fetchMock": true
+    },
+    "overrides": {
+        "files": [ "*.js" ],
+        "excludedFiles": "spec/lib"        
     },
     "plugins": [
         "jasmine"
