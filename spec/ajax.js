@@ -1,7 +1,3 @@
-beforeEach(function() {
-    jasmine.Ajax.install();
-});
-
-afterEach(function() {
-    jasmine.Ajax.uninstall();
+afterEach(function(){
+    fetchMock.restore();
 });
