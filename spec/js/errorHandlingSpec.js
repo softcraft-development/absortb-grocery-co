@@ -2,6 +2,9 @@ describe("Absorb.GroceryCo.Checkout.ErrorHandling", function() {
     describe("log()", function(){
         describe("when passed a reason", function(){
             beforeEach(function(){
+                // We mock out the log method for tests in general,
+                // but need to reinstate it when we're actually testing it.
+                this.errorHandlingLog.and.callThrough();
                 this.reason = "Test Reason";
                 this.consoleErrorSpy = spyOn(console, "error");
                 this.notificationsAddSpy = spyOn(Absorb.GroceryCo.Checkout.Notifications, "add");
