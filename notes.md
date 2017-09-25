@@ -47,3 +47,14 @@ Internationalization
 
 I'm hardcoding text strings into the HTML & JS since this is a simple programming challenge in Vanilla JS. In real-world apps, I prefer to build in internationalization capability from the start. (The Intl JS library, Format.js, and react-intl all do a good job of this.) It's much easier to pay attention to internationalization concerns from the start than it is to retrofit after the fact. However, for this particular project, that's just extra work.
 
+Deployment
+==========
+
+Originally I wanted to have the website be loadable directly from the filesystem, simply by clicking index.html. Unfortunately, I couldn't figure out a way to load external JSON files from the filesystem; `fetch` and `XMLHttpRequest` have issues with CORS that prevent it. 
+
+I had a choice:
+* Recode the app to use inline static JSON data (either in the HTML via `<script>` tags, or just writing it into the JavaScript.
+* Recode the data to be JavaScript instead of JSON and load it via `<script>` tags.
+* Insist that the page be loaded over a real HTTP server, and do `fetch` requests.
+
+I chose the last as it's most reflective of a real-world application. The app now comes with instructions for running a simple HTTP server.
