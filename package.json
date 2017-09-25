@@ -18,5 +18,8 @@
   "homepage": "https://github.com/softcraft-development/absortb-grocery-co#readme",
   "dependencies": {
     "http-server": "^0.10.0"
+  },
+  "devDependencies": {
+    "fetch-mock": "^5.12.2"
   }
 }
