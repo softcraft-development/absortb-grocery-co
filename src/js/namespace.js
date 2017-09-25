@@ -1,5 +1,7 @@
 window.Absorb = {
     GroceryCo: {
-        Checkout: {}
+        Checkout: {
+            Promotions: {}
+        }
     }
 };
