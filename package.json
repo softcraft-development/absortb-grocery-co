@@ -1,0 +1,22 @@
+{
+  "name": "absortb-grocery-co",
+  "version": "1.0.0",
+  "description": "A Front-End Coding Challenge for Absorb SoftWare",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/softcraft-development/absortb-grocery-co.git"
+  },
+  "author": "Craig Walker",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/softcraft-development/absortb-grocery-co/issues"
+  },
+  "homepage": "https://github.com/softcraft-development/absortb-grocery-co#readme",
+  "dependencies": {
+    "http-server": "^0.10.0"
+  }
+}
