@@ -28,3 +28,12 @@ Small, Encapsulated Files
 -------------------------
 
 Generally, I want to keep source files to one class per file, and one file per class. The same goes for other major bits of functionality, like large standalone functions and certain static data structures. There are exceptions, but they have to be minor and infrequent. (Ex: sometimes I'll have a class or enumeration that really only makes sense in the context of a single class. In those cases, I might bend this rule.)
+
+Reduce vs Map
+-------------
+
+When processing an array of data, I'll generally go straight to the `reduce` function, even when I could conceivably use `map`. The reason behind this is:
+* `map` is a strictly 1:1 between the source and result arrays, whereas `reduce` gives me the option to add fewer (or even more) elements to the result array than exist in the source.
+* `reduce` allows me to generate any kind of data structure based on a source array, whereas `map` only returns an array. (I'll often use reduce to create an object map/dictionary/hash for example).
+* Even if neither of the above are necessary currently, they might well be true in the future. If I need to change the transformation logic from a mapper to a reducer, and it's not already written using `reduce`, I then have to do extra work.
+* `reduce` is baked into my muscle memory more than `map`, because of the above three points.
