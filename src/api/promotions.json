@@ -14,7 +14,7 @@
             "type": "group"
         },
         {
-            "discount": 0,
+            "discount": 1,
             "id": "banana-b1g1f",
             "quantity": 1,
             "productId": "banana",

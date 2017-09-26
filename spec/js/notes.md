@@ -16,6 +16,8 @@ Test Data
 
 In real-world projects, I like using randomized data and factories rather than hard-coding test data, or using fixtures. In this project, I'll just use hard-coded test cases in the interest of time.
 
+Note that I use prime numbers when coming up with test values; I use each prime in exactly one spot in a test. This can help me track down how a value is being calculated; if a unique prime is used in a multiplication, then it's products will be unique too. It's also easier to track down additions & subtractions when the operands are prime.
+
 Paths & Dependencies
 --------------------
 
