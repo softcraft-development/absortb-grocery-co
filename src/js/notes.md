@@ -37,3 +37,7 @@ When processing an array of data, I'll generally go straight to the `reduce` fun
 * `reduce` allows me to generate any kind of data structure based on a source array, whereas `map` only returns an array. (I'll often use reduce to create an object map/dictionary/hash for example).
 * Even if neither of the above are necessary currently, they might well be true in the future. If I need to change the transformation logic from a mapper to a reducer, and it's not already written using `reduce`, I then have to do extra work.
 * `reduce` is baked into my muscle memory more than `map`, because of the above three points.
+
+Similarly, I often won't bother with `forEach` when I can use `reduce`, especially when I can reduce the necessity for side effects.
+
+Note: if there's a good reason to use `map` instead of `reduce`, I'll switch in a heartbeat. The best example I can think of is parallelization... but we don't have that option in JavaScript.
