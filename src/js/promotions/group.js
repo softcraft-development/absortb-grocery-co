@@ -5,11 +5,12 @@ Absorb.GroceryCo.Checkout.Promotions.Group = class {
         this.price = price;
     }
 
-    expectedPrice(quantity, price) {
+    calculateDiscount(quantity, price) {
         if (quantity >= this.quantity) {
-            const leftovers = quantity - this.quantity;
-            return this.price + (leftovers * price);
+            const regularPriceOfPromotionQuantity = this.quantity * price;
+            const discount = regularPriceOfPromotionQuantity - this.price;
+            return discount;
         }
-        return quantity * price;
+        return null;
     }
 };

@@ -4,8 +4,8 @@ Absorb.GroceryCo.Checkout.Promotions.Sale = class {
         this.price = price;
     }
 
-    // eslint-disable-next-line no-unused-vars
-    expectedPrice(quantity, price) {
-        return quantity * this.price;
+    calculateDiscount(quantity, price) {
+        var discountPerItem = price - this.price;
+        return quantity * discountPerItem;
     }
 };

@@ -4,24 +4,31 @@ describe("Absorb.GroceryCo.Checkout.Promotions.Group", function() {
         this.promotionQuantity = 23;
         this.promotionPrice = 29;
         this.regularPrice = 31;
+        this.promotionDiscount = (this.regularPrice * this.promotionQuantity) - this.promotionPrice;
         this.instance = new Absorb.GroceryCo.Checkout.Promotions.Group(
             this.id,
             this.promotionQuantity,
             this.promotionPrice
         );
         this.getResult = () => {
-            return this.instance.expectedPrice(this.actualQuantity, this.regularPrice);
+            return this.instance.calculateDiscount(this.actualQuantity, this.regularPrice);
         };
     });
 
-    describe("expectedPrice()", function() {
+    function itReturnsThePromotionDiscount(){
+        it("returns the promotion discount", function() {
+            expect(this.result).toEqual(this.promotionDiscount);
+        });
+    }
+
+    describe("calculateDiscount()", function() {
         describe("when the actual quantity is less than the promotion quantity", function() {
             beforeEach(function() {
                 this.actualQuantity = this.promotionQuantity - 1;
                 this.result = this.getResult();
             });
             it("does not apply any discount", function() {
-                expect(this.result).toEqual(this.actualQuantity * this.regularPrice);
+                expect(this.result).toBeNull();
             });
         });
 
@@ -30,9 +37,7 @@ describe("Absorb.GroceryCo.Checkout.Promotions.Group", function() {
                 this.actualQuantity = this.promotionQuantity;
                 this.result = this.getResult();
             });
-            it("returns the promotion price", function() {
-                expect(this.result).toEqual(this.promotionPrice);
-            });
+            itReturnsThePromotionDiscount();
         });
 
         describe("when the actual quantity exceeds the promotion quantity", function() {
@@ -41,9 +46,7 @@ describe("Absorb.GroceryCo.Checkout.Promotions.Group", function() {
                 this.actualQuantity = this.promotionQuantity + this.excessQuantity;
                 this.result = this.getResult();
             });
-            it("returns the promotion price plus the regular price for the excess", function() {
-                expect(this.result).toEqual(this.promotionPrice + (this.excessQuantity * this.regularPrice));
-            });
+            itReturnsThePromotionDiscount();
         });
 
         describe("when the actual quantity is multiples of the promotion quality", function() {
@@ -53,10 +56,7 @@ describe("Absorb.GroceryCo.Checkout.Promotions.Group", function() {
                 this.result = this.getResult();
             });
             // We're not multiply applying promotions; see src/js/promotions/notes.md
-            it("returns the promotion price plus the regular price for the excess", function() {
-                const excessQuantity = this.actualQuantity - this.promotionQuantity;
-                expect(this.result).toEqual(this.promotionPrice + (excessQuantity * this.regularPrice));
-            });
+            itReturnsThePromotionDiscount();
         });
     });
 });

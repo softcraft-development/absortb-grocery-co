@@ -10,25 +10,24 @@ describe("Absorb.GroceryCo.Checkout.Promotions.AdditionalProduct", function() {
             this.discount
         );
         this.getResult = () => {
-            return this.instance.expectedPrice(this.actualQuantity, this.regularPrice);
+            return this.instance.calculateDiscount(this.actualQuantity, this.regularPrice);
         };
     });
 
     function noDiscount() {
         it("does not apply any discount", function() {
-            expect(this.result).toEqual(this.actualQuantity * this.regularPrice);
+            expect(this.result).toBeNull();
         });
     }
 
     function discountOneItem() {
         it("applies the discount to the discounted item", function() {
             const discount = this.regularPrice * this.discount;
-            const targetPrice = (this.actualQuantity * this.regularPrice) - discount;
-            expect(this.result).toEqual(targetPrice);
+            expect(this.result).toEqual(discount);
         });
     }
 
-    describe("expectedPrice()", function() {
+    describe("calculateDiscount()", function() {
         describe("when the actual quantity is less than the promotion quantity", function() {
             beforeEach(function() {
                 this.actualQuantity = this.promotionQuantity - 1;

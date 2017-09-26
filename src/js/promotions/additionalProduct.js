@@ -5,11 +5,10 @@ Absorb.GroceryCo.Checkout.Promotions.AdditionalProduct = class {
         this.discount = discount;
     }
 
-    expectedPrice(quantity, price) {
-        var discount = 0;
+    calculateDiscount(quantity, price) {
         if (quantity > this.quantity) {
-            discount = this.discount * price;
+            return this.discount * price;
         }
-        return (quantity * price) - discount;
+        return null;
     }
 };
