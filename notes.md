@@ -1,6 +1,13 @@
 Display
 =======
 
+Not Reinventing Any Wheels
+--------------------------
+
+This UI implementation is intentionally crude, in the name of simplicity and time. There's lots of better approaches to DOM manipulation, but none of them are really "Vanilla JS". 
+
+A lot of how I'm doing UI work here is reminiscint of Backbone. (For instance, any variable that holds a DOM object has a dollar-sign $prefix; this is a Backbone-ism.) IMO, it's a fine system that's out of fashion currently. If I was doing a major project today, I'd still probably choose React; the pros and cons of each are an entire conversation.
+
 Text Fields
 -----------
 
