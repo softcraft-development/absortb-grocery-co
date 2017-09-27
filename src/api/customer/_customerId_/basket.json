@@ -1,3 +1,16 @@
 {
-    
+    "basket": [
+        {
+            "productId": "orange",
+            "quantity": 8
+        },
+        {
+            "productId": "some-arbitrary-id",
+            "quantity": 5
+        },
+        {
+            "productId": "4011",
+            "quantity": 6
+        }
+    ]
 }
