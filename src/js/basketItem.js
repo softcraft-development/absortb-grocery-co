@@ -1,12 +1,14 @@
 Absorb.GroceryCo.Checkout.BasketItem = class {
-    constructor(id, name, price, promotions, quantity) {
+    constructor(id, name, price, promotions, quantity, inventory) {
         this.id = id;
         this.name = name;
         this.price = price;
         this.promotions = promotions || [];
         this.quantityListeners = [];
+        this.inventory = inventory;
 
         var _quantity = quantity;
+        this.quantityValidationMessage = null;
 
         // Quantity is the only place in the app where the state changes.
         // I need a way to reflect state changes in the UI representation.
@@ -27,7 +29,6 @@ Absorb.GroceryCo.Checkout.BasketItem = class {
             }
         });
         this.quantity = quantity || 0;
-
     }
 
     addQuantityListener(listener) {

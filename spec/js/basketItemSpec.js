@@ -4,6 +4,7 @@ describe("Absorb.GroceryCo.Checkout.BasketItem", function() {
         this.name = "Test Name";
         this.price = 3;
         this.quantity = 5;
+        this.inventory = 37;
 
         this.instantiate = () => {
             this.instance = new Absorb.GroceryCo.Checkout.BasketItem(
@@ -11,7 +12,8 @@ describe("Absorb.GroceryCo.Checkout.BasketItem", function() {
                 this.name,
                 this.price,
                 this.promotions,
-                this.quantity
+                this.quantity,
+                this.inventory
             );
             return this.instance;
         };
