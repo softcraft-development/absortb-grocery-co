@@ -10,22 +10,25 @@ describe("Absorb.GroceryCo.Checkout.Promotions.Group", function() {
             this.promotionQuantity,
             this.promotionPrice
         );
-        this.getResult = () => {
-            return this.instance.calculateDiscount(this.actualQuantity, this.regularPrice);
-        };
     });
 
-    function itReturnsThePromotionDiscount(){
+    function itReturnsThePromotionDiscount() {
         it("returns the promotion discount", function() {
             expect(this.result).toEqual(this.promotionDiscount);
         });
     }
 
     describe("calculateDiscount()", function() {
+        beforeEach(function() {
+            this.getResult = () => {
+                this.result = this.instance.calculateDiscount(this.actualQuantity, this.regularPrice);
+                return this.result;
+            };
+        });
         describe("when the actual quantity is less than the promotion quantity", function() {
             beforeEach(function() {
                 this.actualQuantity = this.promotionQuantity - 1;
-                this.result = this.getResult();
+                this.getResult();
             });
             it("does not apply any discount", function() {
                 expect(this.result).toBeNull();
@@ -35,7 +38,7 @@ describe("Absorb.GroceryCo.Checkout.Promotions.Group", function() {
         describe("when the actual quantity is equal to the promotion quantity", function() {
             beforeEach(function() {
                 this.actualQuantity = this.promotionQuantity;
-                this.result = this.getResult();
+                this.getResult();
             });
             itReturnsThePromotionDiscount();
         });
@@ -44,7 +47,7 @@ describe("Absorb.GroceryCo.Checkout.Promotions.Group", function() {
             beforeEach(function() {
                 this.excessQuantity = 37;
                 this.actualQuantity = this.promotionQuantity + this.excessQuantity;
-                this.result = this.getResult();
+                this.getResult();
             });
             itReturnsThePromotionDiscount();
         });
@@ -53,10 +56,21 @@ describe("Absorb.GroceryCo.Checkout.Promotions.Group", function() {
             beforeEach(function() {
                 this.multiples = 41;
                 this.actualQuantity = (this.promotionQuantity * this.multiples);
-                this.result = this.getResult();
+                this.getResult();
             });
             // We're not multiply applying promotions; see src/js/promotions/notes.md
             itReturnsThePromotionDiscount();
+        });
+    });
+
+    describe("describe()", function() {
+        beforeEach(function() {
+            this.result = this.instance.describe();
+        });
+
+        it("returns the quantity for price", function() {
+            const price = Absorb.GroceryCo.Checkout.formatPrice(this.promotionPrice);
+            expect(this.result).toEqual(`${this.promotionQuantity} for ${price}`);
         });
     });
 });

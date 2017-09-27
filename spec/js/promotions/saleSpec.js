@@ -26,4 +26,14 @@ describe("Absorb.GroceryCo.Checkout.Promotions.Sale", function() {
             expect(this.result).toEqual(discount);
         });
     });
+
+    describe("describe()", function() {
+        beforeEach(function() {
+            this.result = this.instance.describe();
+        });
+
+        it("returns sale price", function() {
+            expect(this.result).toEqual(Absorb.GroceryCo.Checkout.formatPrice(this.salePrice));
+        });
+    });
 });

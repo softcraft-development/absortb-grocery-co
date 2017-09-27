@@ -8,4 +8,8 @@ Absorb.GroceryCo.Checkout.Promotions.Sale = class {
         var discountPerItem = price - this.price;
         return quantity * discountPerItem;
     }
+
+    describe() {
+        return Absorb.GroceryCo.Checkout.formatPrice(this.price);
+    }
 };

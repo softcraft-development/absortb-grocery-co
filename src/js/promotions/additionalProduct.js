@@ -11,4 +11,17 @@ Absorb.GroceryCo.Checkout.Promotions.AdditionalProduct = class {
         }
         return null;
     }
+
+    describe() {
+        var deal;
+        if (this.discount === 0) {
+            deal = "FREE";
+        } else {
+            const value = this.discount.toLocaleString(navigator.language, {
+                style: "percent"
+            });
+            deal = `@ ${value} off`;
+        }
+        return `Buy ${this.quantity} Get 1 ${deal}`;
+    }
 };

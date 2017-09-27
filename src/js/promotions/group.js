@@ -13,4 +13,9 @@ Absorb.GroceryCo.Checkout.Promotions.Group = class {
         }
         return null;
     }
+
+    describe() {
+        const value = Absorb.GroceryCo.Checkout.formatPrice(this.price);
+        return `${this.quantity} for ${value}`;
+    }
 };
