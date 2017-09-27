@@ -104,4 +104,73 @@ describe("Absorb.GroceryCo.Checkout.Views.ReceiptItem", function() {
             });
         });
     });
+
+    function itAddsOneChild(){
+        it("adds a child to the container", function() {
+            expect(this.$container.children.length).toEqual(1);
+        });
+    }
+
+    function subjectIsFirstChild(){
+        beforeEach(function() {
+            this.subject = this.$container.firstChild;
+        });
+    }
+
+    describe("renderDiscount()", function() {
+        beforeEach(function() {
+            this.$container = document.createElement("div");
+            this.discount = 3;
+            this.instance.renderDiscount(this.$container, this.discount);
+        });
+
+        itAddsOneChild();
+
+        describe("container first child", function() {
+            subjectIsFirstChild();
+
+            it("is a div", function() {
+                expect(this.subject).toHaveTagName("div");
+            });
+
+            it("has the discount class", function() {
+                expect(this.subject).toHaveCssClass("discount");
 });
+    function itAddsOneChild(){
+        it("adds a child to the container", function() {
+            expect(this.$container.children.length).toEqual(1);
+        });
+    }
+
+    function subjectIsFirstChild(){
+        beforeEach(function() {
+            this.subject = this.$container.firstChild;
+        });
+    }
+
+    describe("renderDiscount()", function() {
+        beforeEach(function() {
+            this.$container = document.createElement("div");
+            this.discount = 3;
+            this.instance.renderDiscount(this.$container, this.discount);
+        });
+
+        itAddsOneChild();
+
+        describe("container first child", function() {
+            subjectIsFirstChild();
+
+            it("is a div", function() {
+                expect(this.subject).toHaveTagName("div");
+            });
+
+            it("has the discount class", function() {
+                expect(this.subject).toHaveCssClass("discount");
+            });
+
+            it("has the formatted negated discount as the text", function() {
+                expect(this.subject.innerText).toEqual(Absorb.GroceryCo.Checkout.formatPrice(-this.discount));
+            });
+        });
+    });
+
