@@ -81,6 +81,20 @@ describe("Absorb.GroceryCo.Checkout.Views.ReceiptItem", function() {
                     spyOn(this.instance, "renderPromotion");
                     this.render();
                 });
+
+                it("renders the item info to the container", function() {
+                    expect(this.instance.renderRegularItem).toHaveBeenCalledWith(
+                        this.instance.$el,
+                        this.basketItem
+                    );
+                });
+                it("renders the promotion info to the container", function() {
+                    expect(this.instance.renderPromotion).toHaveBeenCalledWith(
+                        this.instance.$el,
+                        this.basketItem
+                    );
+                });
+
                 describe("the container element", function() {
                     beforeEach(function() {
                         this.subject = this.result;
@@ -88,30 +102,18 @@ describe("Absorb.GroceryCo.Checkout.Views.ReceiptItem", function() {
                     it("does not have the none class", function() {
                         expect(this.subject).not.toHaveCssClass("none");
                     });
-                    it("renders the item info to the container", function() {
-                        expect(this.instance.renderRegularItem).toHaveBeenCalledWith(
-                            this.instance.$el,
-                            this.basketItem
-                        );
-                    });
-                    it("renders the promotion info to the container", function() {
-                        expect(this.instance.renderPromotion).toHaveBeenCalledWith(
-                            this.instance.$el,
-                            this.basketItem
-                        );
-                    });
                 });
             });
         });
     });
 
-    function itAddsOneChild(){
+    function itAddsOneChild() {
         it("adds a child to the container", function() {
             expect(this.$container.children.length).toEqual(1);
         });
     }
 
-    function subjectIsFirstChild(){
+    function subjectIsFirstChild() {
         beforeEach(function() {
             this.subject = this.$container.firstChild;
         });
@@ -167,4 +169,73 @@ describe("Absorb.GroceryCo.Checkout.Views.ReceiptItem", function() {
                 expect(this.subject.innerText).toEqual(this.name);
             });
         });
-    });});
+    });
+
+    describe("renderPromotion()", function() {
+        beforeEach(function() {
+            this.$container = document.createElement("div");
+            this.renderPromotion = () => {
+                this.result = this.instance.renderPromotion(this.$container, this.basketItem);
+            };
+        });
+
+        describe("when there is a promotion applied", function() {
+            beforeEach(function() {
+                this.promotion = "Test Promotion";
+                this.discount = 0.3;
+                this.promotionDescriptor = {
+                    discount: this.discount,
+                    promotion: this.promotion
+                };
+                this.basketItem = {
+                    appliedPromotion: () => {
+                        return this.promotionDescriptor;
+                    }
+                };
+                spyOn(this.instance, "renderPromotionName");
+                spyOn(this.instance, "renderPromotionDescription");
+                spyOn(this.instance, "renderDiscount");
+                this.renderPromotion();
+            });
+            itAddsOneChild();
+
+            describe("container first child", function() {
+                subjectIsFirstChild();
+
+                it("is a div", function() {
+                    expect(this.subject).toHaveTagName("div");
+                });
+
+                it("has the promotion class", function() {
+                    expect(this.subject).toHaveCssClass("promotion");
+                });
+                
+                it("renders the promotion name", function() {
+                    expect(this.instance.renderPromotionName).toHaveBeenCalledWith(this.subject);
+                });
+
+                it("renders the promotion description", function() {
+                    expect(this.instance.renderPromotionDescription).toHaveBeenCalledWith(this.subject, this.promotion);
+                });
+
+                it("renders the discount", function() {
+                    expect(this.instance.renderDiscount).toHaveBeenCalledWith(this.subject, this.discount);
+                });
+            });
+        });
+
+        describe("when there is no promotion applied", function() {
+            beforeEach(function() {
+                this.basketItem = {
+                    appliedPromotion() {
+                        return null;
+                    }
+                };
+                this.renderPromotion();
+            });
+            it("adds no children", function() {
+                expect(this.$container.firstChild).toBeNull();
+            })
+        });
+    });
+});
