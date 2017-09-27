@@ -1,18 +1,42 @@
 describe("Absorb.GroceryCo.Checkout.BasketItem", function() {
     beforeEach(function() {
         this.id = "test-basket-item-id";
+        this.name = "Test Name";
         this.price = 3;
         this.quantity = 5;
 
         this.instantiate = () => {
             this.instance = new Absorb.GroceryCo.Checkout.BasketItem(
                 this.id,
+                this.name,
                 this.price,
                 this.promotions,
                 this.quantity
             );
             return this.instance;
         };
+    });
+
+    describe("when instantiated", function(){
+        beforeEach(function(){
+            this.promotions = [];
+            this.instantiate();
+        });
+        it("sets the id", function(){
+            expect(this.instance.id).toEqual(this.id);
+        });
+        it("sets the name", function(){
+            expect(this.instance.name).toEqual(this.name);
+        });
+        it("sets the price", function(){
+            expect(this.instance.price).toEqual(this.price);
+        });
+        it("sets the promotions", function(){
+            expect(this.instance.promotions).toBe(this.promotions);
+        });
+        it("sets the quantity", function(){
+            expect(this.instance.quantity).toEqual(this.quantity);
+        });
     });
 
     describe("appliedPromotion()", function() {

@@ -120,11 +120,13 @@ describe("Absorb.GroceryCo.Checkout.Basket", function() {
         describe("when passed inventory product data", function() {
             beforeEach(function() {
                 this.productId = "test-product";
+                this.productName = "Test Name";
                 this.productPrice = 3;
                 this.inventoryData = {
                     products: [
                         {
                             id: this.productId,
+                            name: this.productName,
                             price: this.productPrice
                         }
                     ]
@@ -167,6 +169,10 @@ describe("Absorb.GroceryCo.Checkout.Basket", function() {
 
                     it("has the product id", function() {
                         expect(this.subject.id).toEqual(this.productId);
+                    });
+
+                    it("has the product name", function() {
+                        expect(this.subject.name).toEqual(this.productName);
                     });
 
                     it("has the product price", function() {

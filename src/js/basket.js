@@ -94,6 +94,7 @@ Absorb.GroceryCo.Checkout.Basket = class {
             if (product) {
                 const basketItem = new Absorb.GroceryCo.Checkout.BasketItem(
                     product.id,
+                    product.name,
                     product.price,
                     product.promotions,
                     basketItemData.quantity
