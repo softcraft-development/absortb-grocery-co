@@ -161,6 +161,43 @@ describe("Absorb.GroceryCo.Checkout.BasketItem", function() {
             });
         });
     });
+
+    describe("setQuantity()", function(){
+        beforeEach(function(){
+            this.newQuantity = 31;
+            this.instantiate();
+            this.setQuantity = () => {
+                this.result = this.instance.setQuantity(this.newQuantity);
+            };
+        });
+
+        describe("regardless of whether there's a listener added", function(){
+            beforeEach(function(){
+                // When I add my own enhancements to Jasmine,
+                // I can write tests in such a way that everything
+                // is late-bound, regardless of the declaration order.
+                // These enhancements would make this sort of 
+                // odd describe() section unnecessary.
+                this.setQuantity();
+            });
+
+            it("updates the quantity", function(){
+                expect(this.instance.quantity).toEqual(this.newQuantity);
+            });
+        });
+
+        describe("when there is a listener added", function(){
+            beforeEach(function(){
+                this.listener = jasmine.createSpy("listener");
+                this.instance.addQuantityListener(this.listener);
+                this.setQuantity();
+            });
+
+            it("passes the basket item to the listener", function(){
+                expect(this.listener).toHaveBeenCalledWith(this.instance);
+            });
+        });
+    });
     
     describe("subtotal()", function() {
         beforeEach(function() {
