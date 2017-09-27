@@ -25,18 +25,11 @@ Absorb.GroceryCo.Checkout.Views.ReceiptItem = class {
         return this.$el;
     }
 
-    renderDiscount($container, description) {
+    renderDiscount($container, discount) {
         const $discount = document.createElement("div");
         $container.appendChild($discount);
-        $discount.classList.add("description");
-        $discount.innerText = description;
-    }
-
-    renderPromotionDescription($container, discount) {
-        const $description = document.createElement("div");
-        $container.appendChild($description);
-        $description.classList.add("discount");
-        $description.innerText = Absorb.GroceryCo.Checkout.formatPrice(-discount);
+        $discount.classList.add("discount");
+        $discount.innerText = Absorb.GroceryCo.Checkout.formatPrice(-discount);
     }
 
     renderName($container, name) {
