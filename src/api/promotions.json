@@ -10,14 +10,14 @@
             "id": "apple-buy-3-for-2",
             "quantity": 3,
             "price": 2,
-            "productId": "apple",
+            "productId": "some-arbitrary-id",
             "type": "group"
         },
         {
             "discount": 1,
             "id": "banana-b1g1f",
             "quantity": 1,
-            "productId": "banana",
+            "productId": "4011",
             "type": "additionalProduct"
         }
     ]
