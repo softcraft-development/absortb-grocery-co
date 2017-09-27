@@ -269,4 +269,29 @@ describe("Absorb.GroceryCo.Checkout.Views.ReceiptItem", function() {
             });
         });
     });
+
+    describe("renderPromotionName()", function() {
+        beforeEach(function() {
+            this.$container = document.createElement("div");
+            this.instance.renderPromotionName(this.$container);
+        });
+
+        itAddsOneChild();
+
+        describe("container first child", function() {
+            subjectIsFirstChild();
+
+            it("is a div", function() {
+                expect(this.subject).toHaveTagName("div");
+            });
+
+            it("has the name class", function() {
+                expect(this.subject).toHaveCssClass("name");
+            });
+
+            it("has Promo as the text", function() {
+                expect(this.subject.innerText).toEqual("Promo");
+            });
+        });
+    });
 });
