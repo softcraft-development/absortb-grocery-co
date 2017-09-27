@@ -17,24 +17,24 @@ describe("Absorb.GroceryCo.Checkout.BasketItem", function() {
         };
     });
 
-    describe("when instantiated", function(){
-        beforeEach(function(){
+    describe("when instantiated", function() {
+        beforeEach(function() {
             this.promotions = [];
             this.instantiate();
         });
-        it("sets the id", function(){
+        it("sets the id", function() {
             expect(this.instance.id).toEqual(this.id);
         });
-        it("sets the name", function(){
+        it("sets the name", function() {
             expect(this.instance.name).toEqual(this.name);
         });
-        it("sets the price", function(){
+        it("sets the price", function() {
             expect(this.instance.price).toEqual(this.price);
         });
-        it("sets the promotions", function(){
+        it("sets the promotions", function() {
             expect(this.instance.promotions).toBe(this.promotions);
         });
-        it("sets the quantity", function(){
+        it("sets the quantity", function() {
             expect(this.instance.quantity).toEqual(this.quantity);
         });
     });
@@ -186,43 +186,45 @@ describe("Absorb.GroceryCo.Checkout.BasketItem", function() {
         });
     });
 
-    describe("setQuantity()", function(){
-        beforeEach(function(){
+    describe(".quantity", function() {
+        beforeEach(function() {
             this.newQuantity = 31;
             this.instantiate();
             this.setQuantity = () => {
-                this.result = this.instance.setQuantity(this.newQuantity);
+                this.result = this.instance.quantity = this.newQuantity;
             };
         });
 
-        describe("regardless of whether there's a listener added", function(){
-            beforeEach(function(){
-                // When I add my own enhancements to Jasmine,
-                // I can write tests in such a way that everything
-                // is late-bound, regardless of the declaration order.
-                // These enhancements would make this sort of 
-                // odd describe() section unnecessary.
-                this.setQuantity();
+        describe("when set", function() {
+            describe("regardless of whether there's a listener added", function() {
+                beforeEach(function() {
+                    // When I add my own enhancements to Jasmine,
+                    // I can write tests in such a way that everything
+                    // is late-bound, regardless of the declaration order.
+                    // These enhancements would make this sort of 
+                    // odd describe() section unnecessary.
+                    this.setQuantity();
+                });
+
+                it("updates the quantity", function() {
+                    expect(this.instance.quantity).toEqual(this.newQuantity);
+                });
             });
 
-            it("updates the quantity", function(){
-                expect(this.instance.quantity).toEqual(this.newQuantity);
-            });
-        });
+            describe("when there is a listener added", function() {
+                beforeEach(function() {
+                    this.listener = jasmine.createSpy("listener");
+                    this.instance.addQuantityListener(this.listener);
+                    this.setQuantity();
+                });
 
-        describe("when there is a listener added", function(){
-            beforeEach(function(){
-                this.listener = jasmine.createSpy("listener");
-                this.instance.addQuantityListener(this.listener);
-                this.setQuantity();
-            });
-
-            it("passes the basket item to the listener", function(){
-                expect(this.listener).toHaveBeenCalledWith(this.instance);
+                it("passes the basket item to the listener", function() {
+                    expect(this.listener).toHaveBeenCalledWith(this.instance);
+                });
             });
         });
     });
-    
+
     describe("subtotal()", function() {
         beforeEach(function() {
             this.instantiate();

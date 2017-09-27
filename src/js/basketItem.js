@@ -4,12 +4,33 @@ Absorb.GroceryCo.Checkout.BasketItem = class {
         this.name = name;
         this.price = price;
         this.promotions = promotions || [];
+        this.quantityListeners = [];
+
+        var _quantity = quantity;
+
+        // Quantity is the only place in the app where the state changes.
+        // I need a way to reflect state changes in the UI representation.
+        // Doing this manual subscriber model on a single property is crude, but effective enough.
+        // In a real-world app, I definitely wouldn't try to do it this way, as it'd be a lot
+        // of extra work. There's much better options available (React/Redux, or even)
+        // Backbone's models with their own event system. However, none of them are 
+        // "Vanilla" JS, and so not really applicable for this app.
+        Object.defineProperty(this, "quantity", {
+            get: () => {
+                return _quantity;
+            },
+            set: (value) => {
+                _quantity = value;
+                this.quantityListeners.forEach((listener) => {
+                    listener(this);
+                });
+            }
+        });
         this.quantity = quantity || 0;
 
-        this.quantityListeners = [];
     }
 
-    addQuantityListener(listener){
+    addQuantityListener(listener) {
         this.quantityListeners.push(listener);
     }
 
@@ -36,20 +57,6 @@ Absorb.GroceryCo.Checkout.BasketItem = class {
             return contender;
         }, null);
         return best;
-    }
-
-    // Quantity is the only place in the app where the state changes.
-    // I need a way to reflect state changes in the UI representation.
-    // Doing this manual subscriber model on a single property is crude, but effective enough.
-    // In a real-world app, I definitely wouldn't try to do it this way, as it'd be a lot
-    // of extra work. There's much better options available (React/Redux, or even)
-    // Backbone's models with their own event system. However, none of them are 
-    // "Vanilla" JS, and so not really applicable for this app.
-    setQuantity(quantity) {
-        this.quantity = quantity;
-        this.quantityListeners.forEach((listener)=>{
-            listener(this);
-        });
     }
 
     subtotal() {
