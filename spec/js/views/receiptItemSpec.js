@@ -135,24 +135,19 @@ describe("Absorb.GroceryCo.Checkout.Views.ReceiptItem", function() {
 
             it("has the discount class", function() {
                 expect(this.subject).toHaveCssClass("discount");
-});
-    function itAddsOneChild(){
-        it("adds a child to the container", function() {
-            expect(this.$container.children.length).toEqual(1);
-        });
-    }
+            });
 
-    function subjectIsFirstChild(){
-        beforeEach(function() {
-            this.subject = this.$container.firstChild;
+            it("has the formatted negated discount as the text", function() {
+                expect(this.subject.innerText).toEqual(Absorb.GroceryCo.Checkout.formatPrice(-this.discount));
+            });
         });
-    }
+    });
 
-    describe("renderDiscount()", function() {
+    describe("renderName()", function() {
         beforeEach(function() {
             this.$container = document.createElement("div");
-            this.discount = 3;
-            this.instance.renderDiscount(this.$container, this.discount);
+            this.name = "Test Name";
+            this.instance.renderName(this.$container, this.name);
         });
 
         itAddsOneChild();
@@ -164,13 +159,12 @@ describe("Absorb.GroceryCo.Checkout.Views.ReceiptItem", function() {
                 expect(this.subject).toHaveTagName("div");
             });
 
-            it("has the discount class", function() {
-                expect(this.subject).toHaveCssClass("discount");
+            it("has the name class", function() {
+                expect(this.subject).toHaveCssClass("name");
             });
 
-            it("has the formatted negated discount as the text", function() {
-                expect(this.subject.innerText).toEqual(Absorb.GroceryCo.Checkout.formatPrice(-this.discount));
+            it("has the name as the text", function() {
+                expect(this.subject.innerText).toEqual(this.name);
             });
         });
-    });
-
+    });});
