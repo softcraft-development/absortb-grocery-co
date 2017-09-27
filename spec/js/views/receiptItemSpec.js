@@ -63,7 +63,7 @@ describe("Absorb.GroceryCo.Checkout.Views.ReceiptItem", function() {
                         this.subject = this.result;
                     });
                     it("has none class", function() {
-                        expect(this.subject).toHaveCssClass("none"));
+                        expect(this.subject).toHaveCssClass("none");
                     });
                     it("has no children", function() {
                         expect(this.subject.firstChild).toBeNull();
