@@ -97,7 +97,8 @@ Absorb.GroceryCo.Checkout.Basket = class {
                     product.name,
                     product.price,
                     product.promotions,
-                    basketItemData.quantity
+                    basketItemData.quantity,
+                    product.quantity
                 );
                 array.push(basketItem);
             }

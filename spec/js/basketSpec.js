@@ -122,12 +122,14 @@ describe("Absorb.GroceryCo.Checkout.Basket", function() {
                 this.productId = "test-product";
                 this.productName = "Test Name";
                 this.productPrice = 3;
+                this.productQuantity = 5;
                 this.inventoryData = {
                     products: [
                         {
                             id: this.productId,
                             name: this.productName,
-                            price: this.productPrice
+                            price: this.productPrice,
+                            quantity: this.productQuantity
                         }
                     ]
                 };
@@ -185,6 +187,10 @@ describe("Absorb.GroceryCo.Checkout.Basket", function() {
 
                     it("has the basket quantity", function() {
                         expect(this.subject.quantity).toEqual(this.basketQuantity);
+                    });
+
+                    it("has the product inventory", function() {
+                        expect(this.subject.inventory).toEqual(this.productQuantity);
                     });
                 });
 
