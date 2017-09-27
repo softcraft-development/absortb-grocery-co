@@ -39,11 +39,11 @@ describe("Absorb.GroceryCo.Checkout.Views.ReceiptItem", function() {
                 });
 
                 it("is a div", function() {
-                    expect(this.subject.tagName.toLowerCase()).toEqual("div");
+                    expect(this.subject).toHaveTagName("div");
                 });
 
                 it("has the receipt-item class", function() {
-                    expect(this.subject.classList.contains("receipt-item")).toEqual(true);
+                    expect(this.subject).toHaveCssClass("receipt-item");
                 });
             });
         });
@@ -63,7 +63,7 @@ describe("Absorb.GroceryCo.Checkout.Views.ReceiptItem", function() {
                         this.subject = this.result;
                     });
                     it("has none class", function() {
-                        expect(this.subject.classList.contains("none")).toEqual(true);
+                        expect(this.subject).toHaveCssClass("none"));
                     });
                     it("has no children", function() {
                         expect(this.subject.firstChild).toBeNull();
@@ -86,7 +86,7 @@ describe("Absorb.GroceryCo.Checkout.Views.ReceiptItem", function() {
                         this.subject = this.result;
                     });
                     it("does not have the none class", function() {
-                        expect(this.subject.classList.contains("none")).toEqual(false);
+                        expect(this.subject).not.toHaveCssClass("none");
                     });
                     it("renders the item info to the container", function() {
                         expect(this.instance.renderRegularItem).toHaveBeenCalledWith(

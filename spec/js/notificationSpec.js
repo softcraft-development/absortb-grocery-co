@@ -70,15 +70,15 @@ describe("Absorb.GroceryCo.Checkout.Notification", function() {
             });
 
             it("is a div", function() {
-                expect(this.subject.tagName.toLowerCase()).toEqual("div");
+                expect(this.subject).toHaveTagName("div");
             });
 
             it("has the notification class", function() {
-                expect(this.subject.classList.contains("notification")).toEqual(true);
+                expect(this.subject).toHaveCssClass("notification");
             });
 
             it("has the class from the className property", function() {
-                expect(this.subject.classList.contains(this.className)).toEqual(true);
+                expect(this.subject).toHaveCssClass(this.className);
             });
 
             describe("first child", function() {
@@ -87,11 +87,11 @@ describe("Absorb.GroceryCo.Checkout.Notification", function() {
                 });
 
                 it("is a span", function(){
-                    expect(this.subject.tagName.toLowerCase()).toEqual("span");
+                    expect(this.subject).toHaveTagName("span");
                 });
 
                 it("has the message class", function() {
-                    expect(this.subject.classList.contains("message")).toEqual(true);
+                    expect(this.subject).toHaveCssClass("message");
                 });
                 
                 it("contains the message", function() {
@@ -105,7 +105,7 @@ describe("Absorb.GroceryCo.Checkout.Notification", function() {
                 });
 
                 it("is a button", function(){
-                    expect(this.subject.tagName.toLowerCase()).toEqual("button");
+                    expect(this.subject).toHaveTagName("button");
                 });
 
                 it("is of type button", function(){
@@ -113,7 +113,7 @@ describe("Absorb.GroceryCo.Checkout.Notification", function() {
                 });
 
                 it("has the dismiss class", function() {
-                    expect(this.subject.classList.contains("dismiss")).toEqual(true);
+                    expect(this.subject).toHaveCssClass("dismiss");
                 });
 
                 it("has the dismiss text", function() {
