@@ -209,7 +209,7 @@ describe("Absorb.GroceryCo.Checkout.Views.ReceiptItem", function() {
                 it("has the promotion class", function() {
                     expect(this.subject).toHaveCssClass("promotion");
                 });
-                
+
                 it("renders the promotion name", function() {
                     expect(this.instance.renderPromotionName).toHaveBeenCalledWith(this.subject);
                 });
@@ -235,7 +235,38 @@ describe("Absorb.GroceryCo.Checkout.Views.ReceiptItem", function() {
             });
             it("adds no children", function() {
                 expect(this.$container.firstChild).toBeNull();
-            })
+            });
+        });
+    });
+
+    describe("renderPromotionDescription()", function() {
+        beforeEach(function() {
+            this.$container = document.createElement("div");
+            this.description = "Test Description";
+            this.promotion = {
+                describe: ()=>{
+                    return this.description;
+                }
+            };
+            this.instance.renderPromotionDescription(this.$container, this.promotion);
+        });
+
+        itAddsOneChild();
+
+        describe("container first child", function() {
+            subjectIsFirstChild();
+
+            it("is a div", function() {
+                expect(this.subject).toHaveTagName("div");
+            });
+
+            it("has the description class", function() {
+                expect(this.subject).toHaveCssClass("description");
+            });
+
+            it("has prefixed description as the text", function() {
+                expect(this.subject.innerText).toEqual(`@ ${this.description}`);
+            });
         });
     });
 });
