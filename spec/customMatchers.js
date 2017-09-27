@@ -17,7 +17,7 @@ Absorb.GroceryCo.Checkout.Test = {
                 }
             };
         },
-        toHaveTagCssClass() {
+        toHaveCssClass() {
             return {
                 compare($element, className) {
                     const result = {
