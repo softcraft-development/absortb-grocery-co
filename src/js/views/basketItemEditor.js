@@ -6,16 +6,24 @@ Absorb.GroceryCo.Checkout.Views.BasketItemEditor = class {
 
     onAdd(event) {
         event.preventDefault();
-        this.basketItem.quantity = this.basketItem.quantity + 1;
+        this.basketItem.quantity = (this.basketItem.quantity || 0) + 1;
     }
 
     onQuantityEdited(event) {
-        this.basketItem.quantity = event.target.value;
+        const raw = event.target.value.trim();
+        const quantity = Number.parseFloat(raw);
+        if (Number.isNaN(quantity)) {
+            this.setMessage("Quantity must be a valid number.");
+            this.basketItem.quantity = null;
+            return;
+        }
+
+        this.basketItem.quantity = quantity;
     }
 
     onRemove(event) {
         event.preventDefault();
-        this.basketItem.quantity = this.basketItem.quantity - 1;
+        this.basketItem.quantity = (this.basketItem.quantity || 0) - 1;
     }
 
     render() {
@@ -25,7 +33,7 @@ Absorb.GroceryCo.Checkout.Views.BasketItemEditor = class {
 
             this.renderControls(this.$el);
             this.renderMessage(this.$el);
-            this.updateQuantity(this.basketItem.quantity, this.basketItem.quantity);
+            this.updateQuantity(this.basketItem);
         }
         return this.$el;
     }
@@ -95,15 +103,14 @@ Absorb.GroceryCo.Checkout.Views.BasketItemEditor = class {
         this.$message.innerHTML = message;
     }
 
-    updateQuantity(quantity) {
-        this.$quantity.setAttribute("value", quantity || 0);
-
-        if (Number.isNaN(quantity)) {
-            this.setMessage("Quantity must be a valid number.");
-            return;
+    updateQuantity(basketItem) {
+        const quantity = basketItem.quantity;
+        if ( quantity != null ) {
+            this.$quantity.value = String(quantity);
+            this.setMessage("");
         }
 
-        if (quantity >= this.basketItem.inventory) {
+        if (quantity >= basketItem.inventory) {
             this.$add.setAttribute("disabled", "disabled");
         }
         else {
@@ -126,7 +133,5 @@ Absorb.GroceryCo.Checkout.Views.BasketItemEditor = class {
             this.setMessage(`Quantity must be less than ${this.basketItem.inventory}.`);
             return;
         }
-
-        this.setMessage("");
     }
 };
