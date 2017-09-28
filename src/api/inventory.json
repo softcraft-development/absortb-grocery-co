@@ -3,22 +3,26 @@
         {
             "id": "orange",
             "name": "Orange",
-            "price": 1.50
+            "price": 1.50,
+            "quantity": 12
         },
         {
             "id": "some-arbitrary-id",
             "name": "Apple",
-            "price": 0.98
+            "price": 0.98,
+            "quantity": 7
         },
         {
             "id": "4011",
             "name": "Banana",
-            "price": 1.15
+            "price": 1.15,
+            "quantity": 4
         },
         {
             "id": "something-not-in-the-basket",
             "name": "Mango",
-            "price": 3
+            "price": 3,
+            "quantity": 100
         }
     ]
 }
