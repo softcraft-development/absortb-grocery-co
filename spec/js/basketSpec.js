@@ -205,7 +205,10 @@ describe("Absorb.GroceryCo.Checkout.Basket", function() {
                             ]
                         };
                         this.promotion = {
-                            id: "A promotion object"
+                            id: "A promotion object",
+                            calculateDiscount: () => {
+                                return null;
+                            }
                         };
                         spyOn(this.instance, "createPromotion").and.returnValue(this.promotion);
                         this.load();
@@ -289,8 +292,8 @@ describe("Absorb.GroceryCo.Checkout.Basket", function() {
                     this.load();
                 });
 
-                it("sorts the items by name", function(){
-                    const names = this.instance.items.map((item)=>item.name);
+                it("sorts the items by name", function() {
+                    const names = this.instance.items.map((item) => item.name);
                     expect(names).toEqual([this.aName, this.bName]);
                 });
             });
@@ -303,8 +306,8 @@ describe("Absorb.GroceryCo.Checkout.Basket", function() {
                     this.load();
                 });
 
-                it("sorts the items by od", function(){
-                    const names = this.instance.items.map((item)=>item.id);
+                it("sorts the items by od", function() {
+                    const names = this.instance.items.map((item) => item.id);
                     expect(names).toEqual([this.bId, this.aId]);
                 });
             });
