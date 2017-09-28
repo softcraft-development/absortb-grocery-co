@@ -11,7 +11,7 @@ Absorb.GroceryCo.Checkout.Views.Receipt = class {
             this.basketItems.reduce(($container, basketItem) => {
                 const receiptItem = new Absorb.GroceryCo.Checkout.Views.ReceiptItem();
                 const $itemEl = receiptItem.render(basketItem);
-                basketItem.addQuantityListener((updated)=>{
+                basketItem.addQuantityListener((updated) => {
                     receiptItem.render(updated);
                 });
                 $container.appendChild($itemEl);

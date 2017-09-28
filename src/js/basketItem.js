@@ -7,8 +7,7 @@ Absorb.GroceryCo.Checkout.BasketItem = class {
         this.quantityListeners = [];
         this.inventory = inventory;
 
-        var _quantity = quantity;
-        this.quantityValidationMessage = null;
+        var _quantity;
 
         // Quantity is the only place in the app where the state changes.
         // I need a way to reflect state changes in the UI representation.
@@ -21,10 +20,11 @@ Absorb.GroceryCo.Checkout.BasketItem = class {
             get: () => {
                 return _quantity;
             },
-            set: (value) => {
-                _quantity = value;
+            set: (raw) => {
+                const result = this.validateQuantity(raw);
+                _quantity = result.quantity;
                 this.quantityListeners.forEach((listener) => {
-                    listener(this);
+                    listener(_quantity, raw);
                 });
             }
         });
@@ -62,5 +62,29 @@ Absorb.GroceryCo.Checkout.BasketItem = class {
 
     subtotal() {
         return this.price * this.quantity;
+    }
+
+    validateQuantity(raw) {
+        // It's not explicitly stated anywhere in the specs whether we are allowing
+        // fractional quantities. It's implied via the given examples and the add/remove
+        // buttons that quantities should be discrete/integers. However, it's not
+        // good to assume that (the quantities for fruit could very well be weights
+        // after all). This would require some clarification of the specs. In the meantime,
+        // I'm going to assume fractional quantities are fine; that makes for
+        // simpler code as I don't have to try to detect & handle unaccepted decimal values.
+
+        const result = {
+            quantity: null,
+            raw,
+        };
+
+        if (typeof raw === "number") {
+            result.quantity = raw;
+        } else {
+            raw = String(raw).trim();
+            result.quantity = Number.parseFloat(raw);
+        }
+
+        return result;
     }
 };
