@@ -9,12 +9,13 @@ body {
     align-items: center;
     align-content: center;
     height: 100%;
-    color: black;
+    color: hsl(0, 0, 0);
     font-family: 'Open Sans', sans-serif;
     font-weight: 300;
 }
 
 h1, h2, h3 {
+    color: 	hsl(156, 50%, 30%);
     font-family: 'Poiret One', sans-serif;
     font-weight: bold;
 }
@@ -25,9 +26,9 @@ h1 {
 }
 
 #page-content {
-    border: 1px solid #666666;
+    border: 3px solid hsl(156, 50%, 30%);
     border-radius: 1rem;
-    box-shadow: 0.3rem 0.3rem 1rem 0 #dddddd;
+    box-shadow: 0.3rem 0.3rem 1rem 0 hsl(0, 0%, 87%);
     margin: 1rem;
     padding: 3rem;
 }
