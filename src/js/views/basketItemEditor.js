@@ -26,8 +26,9 @@ Absorb.GroceryCo.Checkout.Views.BasketItemEditor = class {
             this.$el = document.createElement("div");
             this.$el.classList.add("basket-item", "vm05");
 
-            this.renderMessage(this.$el);
+            this.renderName(this.$el);
             this.renderControls(this.$el);
+            this.renderMessage(this.$el);
             this.validateQuantity(this.basketItem.quantity);
         }
         return this.$el;
@@ -42,15 +43,22 @@ Absorb.GroceryCo.Checkout.Views.BasketItemEditor = class {
         this.$add.addEventListener("click", this.onAdd.bind(this));
     }
 
+    renderButtons($container) {
+        const $buttons = document.createElement("div");
+        $container.appendChild($buttons);
+        $buttons.classList.add("buttons");
+
+        this.renderAdd($buttons);
+        this.renderRemove($buttons);
+    }
+
     renderControls($container) {
         const $controls = document.createElement("div");
         $container.appendChild($controls);
         $controls.classList.add("controls");
-
-        this.renderName($controls);
+        
         this.renderQuantity($controls);
-        this.renderAdd($controls);
-        this.renderRemove($controls);
+        this.renderButtons($controls);
     }
 
     renderMessage($container) {
@@ -69,6 +77,7 @@ Absorb.GroceryCo.Checkout.Views.BasketItemEditor = class {
     renderQuantity($container) {
         this.$quantity = document.createElement("input");
         $container.appendChild(this.$quantity);
+        this.$quantity.classList.add("quantity");
         this.$quantity.setAttribute("name", "quantity");
         this.$quantity.setAttribute("type", "number");
         this.updateQuantity(this.basketItem);

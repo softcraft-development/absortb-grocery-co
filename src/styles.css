@@ -62,17 +62,18 @@ h1 {
     padding: 1rem;
 }
 
-.basket-item .controls {
+.basket-item {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
 }
 
-.basket-item .controls input,
-.basket-item .controls button {
+.basket-item input,
+.basket-item button {
     margin-right: 0.5rem;
 }
 
-.basket-item .controls input {
+.basket-item input {
     font-size: inherit;
     font-family: inherit;
     font-weight: inherit;
@@ -80,7 +81,7 @@ h1 {
     width: 5rem;
 }
 
-.basket-item .controls button {
+.basket-item button {
     background: none;
     border-radius: 0.25rem;
     border-width: 2px;
@@ -92,12 +93,19 @@ h1 {
     padding: 0.1rem 1rem;
 }
 
-.basket-item .controls .add {
+.basket-item .add {
     border-color:  hsla(156, 50%, 30%, 0.5);
 }
 
-.basket-item .controls .remove {
+.basket-item .remove {
     border-color:  hsla(35, 50%, 45%, 0.5);
+}
+
+.basket-item .name,
+.basket-item .quantity,
+.basket-item .buttons,
+.basket-item .message {
+    margin-bottom: 0.25rem;
 }
 
 .basket-item .message {
@@ -106,20 +114,25 @@ h1 {
     font-weight: bold;
 }
 
+.basket-item .controls {
+    display: flex;
+    flex-wrap: wrap;
+}
+
 .receipt-line {
     display: flex;
     flex-wrap: nowrap;
 }
 
 .receipt-line :first-child,
-.basket-item .controls :first-child {
+.basket-item .name {
     flex-shrink: 0;
     margin-right: 1rem;
     width: 20%;
 }
 
 .receipt-line.regular :first-child,
-.basket-item .controls :first-child {
+.basket-item .name {
     padding-right: 1rem;
 }
 
