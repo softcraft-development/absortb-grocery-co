@@ -41,7 +41,7 @@ describe("Absorb.GroceryCo.Checkout.BasketItem", function() {
         });
     });
 
-    describe("appliedPromotion()", function() {
+    describe(".appliedPromotion", function() {
         function itAppliesNoPromotion() {
             it("returns a null applied promotion ", function() {
                 expect(this.result).toBeNull();
@@ -52,7 +52,7 @@ describe("Absorb.GroceryCo.Checkout.BasketItem", function() {
             beforeEach(function() {
                 this.promotions = null;
                 this.instantiate();
-                this.result = this.instance.appliedPromotion();
+                this.result = this.instance.appliedPromotion;
             });
 
             itAppliesNoPromotion();
@@ -75,7 +75,7 @@ describe("Absorb.GroceryCo.Checkout.BasketItem", function() {
                         }
                     ];
                     this.instantiate();
-                    this.result = this.instance.appliedPromotion();
+                    this.result = this.instance.appliedPromotion;
                 });
                 it("returns the promotion discount", function() {
                     expect(this.result).toEqual(jasmine.objectContaining({
@@ -94,7 +94,7 @@ describe("Absorb.GroceryCo.Checkout.BasketItem", function() {
                         }
                     ];
                     this.instantiate();
-                    this.result = this.instance.appliedPromotion();
+                    this.result = this.instance.appliedPromotion;
                 });
                 itAppliesNoPromotion();
             });
@@ -138,7 +138,7 @@ describe("Absorb.GroceryCo.Checkout.BasketItem", function() {
                     this.secondDiscount = null;
                     this.createTwoPromotions();
                     this.instantiate();
-                    this.result = this.instance.appliedPromotion();
+                    this.result = this.instance.appliedPromotion;
                 });
                 itAppliesNoPromotion();
             });
@@ -149,7 +149,7 @@ describe("Absorb.GroceryCo.Checkout.BasketItem", function() {
                     this.secondDiscount = null;
                     this.createTwoPromotions();
                     this.instantiate();
-                    this.result = this.instance.appliedPromotion();
+                    this.result = this.instance.appliedPromotion;
                 });
                 itReturnsTheFirstDiscount();
             });
@@ -160,7 +160,7 @@ describe("Absorb.GroceryCo.Checkout.BasketItem", function() {
                     this.secondDiscount = 13;
                     this.createTwoPromotions();
                     this.instantiate();
-                    this.result = this.instance.appliedPromotion();
+                    this.result = this.instance.appliedPromotion;
                 });
                 itReturnsTheSecondDiscount();
             });
@@ -171,7 +171,7 @@ describe("Absorb.GroceryCo.Checkout.BasketItem", function() {
                     this.secondDiscount = 17;
                     this.createTwoPromotions();
                     this.instantiate();
-                    this.result = this.instance.appliedPromotion();
+                    this.result = this.instance.appliedPromotion;
                 });
                 itReturnsTheFirstDiscount();
             });
@@ -181,7 +181,7 @@ describe("Absorb.GroceryCo.Checkout.BasketItem", function() {
                     this.secondDiscount = 29;
                     this.createTwoPromotions();
                     this.instantiate();
-                    this.result = this.instance.appliedPromotion();
+                    this.result = this.instance.appliedPromotion;
                 });
                 itReturnsTheSecondDiscount();
             });
