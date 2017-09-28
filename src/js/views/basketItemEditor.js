@@ -117,14 +117,14 @@ Absorb.GroceryCo.Checkout.Views.BasketItemEditor = class {
             this.$add.removeAttribute("disabled");
         }
 
-        if (quantity <= 0) {
+        if ((quantity || 0) <= 0) {
             this.$remove.setAttribute("disabled", "disabled");
         }
         else {
             this.$remove.removeAttribute("disabled");
         }
 
-        if (quantity < 0) {
+        if ((quantity || 0) < 0) {
             this.setMessage("Quantity must be greater than 0.");
             return;
         }
