@@ -147,7 +147,22 @@ h1 {
 
 .receipt-line :last-child {
     flex-shrink: 0;
+    flex-grow: 1;
     margin-left: 1rem;
     text-align: right;
     white-space: nowrap;
+}
+
+.totals,
+.grand-total {
+    border-top: 2px solid hsla(35, 50%, 45%, 0.5);
+    padding-top: 1rem;
+}
+
+.totals .discount {
+    padding-bottom: 1rem;
+}
+
+.grand-total {
+    font-weight: bold;
 }
