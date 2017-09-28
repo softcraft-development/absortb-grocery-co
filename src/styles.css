@@ -39,12 +39,13 @@ h1 {
     border-radius: 1rem;
     box-shadow: 0.4rem 0.3rem 1rem 0 hsla(0, 0%, 0%, 0.1);
     margin: 1rem;
-    padding: 3rem;
+    padding: 1rem;
 }
 
 @media (min-width: 800px) {
     #page-content {
         margin: 5rem auto 1rem auto;
+        padding: 3rem;
     }
 }
 
