@@ -6,9 +6,14 @@ describe("Absorb.GroceryCo.Checkout.Views.ReceiptItem", function() {
     describe("render()", function() {
         beforeEach(function() {
             this.quantity = 0;
-            this.basketItem = {
-                quantity: this.quantity
-            };
+            this.basketItem = new Absorb.GroceryCo.Checkout.BasketItem(
+                "test-item-id",
+                "Test Name",
+                3,
+                [],
+                this.quantity,
+                5
+            );
             this.render = () => {
                 this.result = this.instance.render(this.basketItem);
             };
