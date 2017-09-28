@@ -14,7 +14,7 @@ Absorb.GroceryCo.Checkout.Promotions.AdditionalProduct = class {
 
     describe() {
         var deal;
-        if (this.discount === 0) {
+        if (this.discount === 1) {
             deal = "FREE";
         } else {
             const value = this.discount.toLocaleString(navigator.language, {

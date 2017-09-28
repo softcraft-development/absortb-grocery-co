@@ -90,9 +90,9 @@ describe("Absorb.GroceryCo.Checkout.Promotions.AdditionalProduct", function() {
             };
         });
 
-        describe("when the discount is zero", function() {
+        describe("when the discount is 100%", function() {
             beforeEach(function() {
-                this.discount = 0;
+                this.discount = 1;
                 this.getResult();
             });
             it("returns buy X get one free", function(){
