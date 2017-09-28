@@ -80,8 +80,8 @@ Absorb.GroceryCo.Checkout.Views.ReceiptItem = class {
         const $price = document.createElement("div");
         $container.appendChild($price);
         $price.classList.add("price");
-        // In a real-world app, I might use a templating system like Mustache here, 
-        // but for this app, string concatenation is just fine.
+        // string templates are nice, but for long & complex
+        // string building like this, I prefer concatenation of multiple lines.
         var descriptor = "@ ";
         descriptor += Absorb.GroceryCo.Checkout.formatPrice(price);
         descriptor += " x ";
