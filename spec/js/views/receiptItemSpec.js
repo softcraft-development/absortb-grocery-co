@@ -268,8 +268,8 @@ describe("Absorb.GroceryCo.Checkout.Views.ReceiptItem", function() {
                 expect(this.subject).toHaveCssClass("description");
             });
 
-            it("has prefixed description as the text", function() {
-                expect(this.subject.innerText).toEqual(`@ ${this.description}`);
+            it("has the description as the text", function() {
+                expect(this.subject.innerText).toEqual(this.description);
             });
         });
     });

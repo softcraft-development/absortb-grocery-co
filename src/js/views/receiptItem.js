@@ -56,7 +56,7 @@ Absorb.GroceryCo.Checkout.Views.ReceiptItem = class {
         const $description = document.createElement("div");
         $container.appendChild($description);
         $description.classList.add("description");
-        $description.innerText = "@ " + promotion.describe();
+        $description.innerText = promotion.describe();
     }
 
     renderPromotionName($container) {

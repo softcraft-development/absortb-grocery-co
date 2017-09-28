@@ -32,8 +32,8 @@ describe("Absorb.GroceryCo.Checkout.Promotions.Sale", function() {
             this.result = this.instance.describe();
         });
 
-        it("returns sale price", function() {
-            expect(this.result).toEqual(Absorb.GroceryCo.Checkout.formatPrice(this.salePrice));
+        it("returns prefixed sale price", function() {
+            expect(this.result).toEqual("@ " + Absorb.GroceryCo.Checkout.formatPrice(this.salePrice));
         });
     });
 });

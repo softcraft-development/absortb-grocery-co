@@ -10,6 +10,6 @@ Absorb.GroceryCo.Checkout.Promotions.Sale = class {
     }
 
     describe() {
-        return Absorb.GroceryCo.Checkout.formatPrice(this.price);
+        return `@ ${Absorb.GroceryCo.Checkout.formatPrice(this.price)}`;
     }
 };
