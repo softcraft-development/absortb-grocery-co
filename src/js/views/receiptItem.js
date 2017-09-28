@@ -13,7 +13,7 @@ Absorb.GroceryCo.Checkout.Views.ReceiptItem = class {
             }
         } else {
             this.$el = document.createElement("div");
-            this.$el.classList.add("receipt-item");
+            this.$el.classList.add("receipt-item", "vm05");
         }
         if (basketItem.quantity === 0) {
             this.$el.classList.add("none");
