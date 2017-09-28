@@ -70,6 +70,7 @@ h1 {
 .basket-item .controls input {
     font-size: inherit;
     font-family: inherit;
+    font-weight: inherit;
     text-align: right;
     width: 5rem;
 }
@@ -81,6 +82,7 @@ h1 {
     box-shadow: 4px 3px 5px 0 hsla(0, 0%, 0%, 0.05);
     font-size: inherit;
     font-family: inherit;
+    font-weight: inherit;
     padding: 0.1rem 1rem;
 }
 
