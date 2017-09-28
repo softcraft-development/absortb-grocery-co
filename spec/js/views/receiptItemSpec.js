@@ -294,4 +294,120 @@ describe("Absorb.GroceryCo.Checkout.Views.ReceiptItem", function() {
             });
         });
     });
+
+    describe("renderRegularItem()", function() {
+        beforeEach(function() {
+            this.$container = document.createElement("div");
+            this.name = "Test Name";
+            this.quantity = 5;
+            this.price = 7;
+            this.subtotal = 11;
+            this.basketItem = {
+                name: this.name,
+                price: this.price,
+                quantity: this.quantity,
+                subtotal: () => {
+                    return this.subtotal;
+                }
+            };
+            spyOn(this.instance, "renderName");
+            spyOn(this.instance, "renderRegularPrice");
+            spyOn(this.instance, "renderRegularTotal");
+            this.instance.renderRegularItem(this.$container, this.basketItem);
+        });
+
+        itAddsOneChild();
+
+        describe("container first child", function() {
+            subjectIsFirstChild();
+
+            it("is a div", function() {
+                expect(this.subject).toHaveTagName("div");
+            });
+
+            it("has the regular class", function() {
+                expect(this.subject).toHaveCssClass("regular");
+            });
+            
+            it("renders the name", function() {
+                expect(this.instance.renderName).toHaveBeenCalledWith(
+                    this.subject,
+                    this.name
+                );
+            });
+
+            it("renders the regular price", function() {
+                expect(this.instance.renderRegularPrice).toHaveBeenCalledWith(
+                    this.subject,
+                    this.price,
+                    this.quantity
+                );
+            });
+
+            it("renders the total", function() {
+                expect(this.instance.renderRegularTotal).toHaveBeenCalledWith(
+                    this.subject,
+                    this.subtotal
+                );
+            });
+        });
+    });
+
+    describe("renderRegularPrice()", function() {
+        beforeEach(function() {
+            this.$container = document.createElement("div");
+            this.price = 11;
+            this.quantity = 13;
+            this.instance.renderRegularPrice(this.$container, this.price, this.quantity);
+        });
+
+        itAddsOneChild();
+
+        describe("container first child", function() {
+            subjectIsFirstChild();
+
+            it("is a div", function() {
+                expect(this.subject).toHaveTagName("div");
+            });
+
+            it("has the price class", function() {
+                expect(this.subject).toHaveCssClass("price");
+            });
+
+            it("has price description text", function() {
+                const formattedPrice = Absorb.GroceryCo.Checkout.formatPrice(this.price);
+                expect(this.subject.innerText).toEqual(
+                    `@ ${formattedPrice} x ${this.quantity.toLocaleString()}`
+                );
+            });
+        });
+    });
+
+    describe("renderRegularTotal()", function() {
+        beforeEach(function() {
+            this.$container = document.createElement("div");
+            this.total = 17;
+            this.instance.renderRegularTotal(this.$container, this.total);
+        });
+
+        itAddsOneChild();
+
+        describe("container first child", function() {
+            subjectIsFirstChild();
+
+            it("is a div", function() {
+                expect(this.subject).toHaveTagName("div");
+            });
+
+            it("has the total class", function() {
+                expect(this.subject).toHaveCssClass("total");
+            });
+
+            it("has total text", function() {
+                expect(this.subject.innerText).toEqual(
+                    Absorb.GroceryCo.Checkout.formatPrice(this.total)
+                );
+            });
+        });
+    });
 });
