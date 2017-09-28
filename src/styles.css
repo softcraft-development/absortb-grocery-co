@@ -10,10 +10,13 @@ body {
     align-content: center;
     height: 100%;
     color: black;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
 }
 
 h1, h2, h3 {
-    font-family: 'Poiret One', cursive;
+    font-family: 'Poiret One', sans-serif;
+    font-weight: bold;
 }
 
 h1 {
