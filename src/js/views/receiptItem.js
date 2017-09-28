@@ -44,7 +44,7 @@ Absorb.GroceryCo.Checkout.Views.ReceiptItem = class {
         if (descriptor != null) {
             const $promotion = document.createElement("div");
             $container.appendChild($promotion);
-            $promotion.classList.add("promotion");
+            $promotion.classList.add("promotion", "receipt-line");
 
             this.renderPromotionName($promotion);
             this.renderPromotionDescription($promotion, descriptor.promotion);
@@ -69,7 +69,7 @@ Absorb.GroceryCo.Checkout.Views.ReceiptItem = class {
     renderRegularItem($container, basketItem) {
         const $regularItem = document.createElement("div");
         $container.appendChild($regularItem);
-        $regularItem.classList.add("regular");
+        $regularItem.classList.add("regular", "receipt-line");
 
         this.renderName($regularItem, basketItem.name);
         this.renderRegularPrice($regularItem, basketItem.price, basketItem.quantity);

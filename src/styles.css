@@ -52,3 +52,37 @@ h1 {
     border-radius: 0.5rem;
     padding: 1rem;
 }
+
+.receipt-item {
+    margin-top: 0.5rem;
+}
+
+.receipt-line {
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.receipt-line :first-child {
+    flex-shrink: 0;
+    margin-right: 1rem;
+    width: 20%;
+}
+
+.receipt-line.regular :first-child {
+    padding-right: 1rem;
+}
+
+.receipt-line.promotion :first-child {
+    padding-left: 1rem;
+}
+
+.receipt-line :nth-child(2) {
+    flex-grow: 1;
+}
+
+.receipt-line :last-child {
+    flex-shrink: 0;
+    margin-left: 1rem;
+    text-align: right;
+    white-space: nowrap;
+}

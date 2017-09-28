@@ -210,6 +210,10 @@ describe("Absorb.GroceryCo.Checkout.Views.ReceiptItem", function() {
                     expect(this.subject).toHaveCssClass("promotion");
                 });
 
+                it("has the receipt line class", function() {
+                    expect(this.subject).toHaveCssClass("receipt-line");
+                });
+
                 it("renders the promotion name", function() {
                     expect(this.instance.renderPromotionName).toHaveBeenCalledWith(this.subject);
                 });
@@ -323,6 +327,10 @@ describe("Absorb.GroceryCo.Checkout.Views.ReceiptItem", function() {
 
             it("is a div", function() {
                 expect(this.subject).toHaveTagName("div");
+            });
+
+            it("has the receipt line class", function() {
+                expect(this.subject).toHaveCssClass("receipt-line");
             });
 
             it("has the regular class", function() {
