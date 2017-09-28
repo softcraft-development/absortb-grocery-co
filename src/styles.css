@@ -92,6 +92,12 @@ h1 {
     border-color:  hsla(35, 50%, 45%, 0.5);
 }
 
+.basket-item .message {
+    color: #C0607B;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
 .receipt-line {
     display: flex;
     flex-wrap: nowrap;
