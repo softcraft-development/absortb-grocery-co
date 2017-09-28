@@ -104,5 +104,14 @@ Absorb.GroceryCo.Checkout.Basket = class {
             }
             return array;
         }, []);
+
+        this.items = this.items.sort((a, b) => {
+            var result = a.name.localeCompare(b.name);
+            if (result === 0) {
+                // Tie-breaker
+                return a.id.localeCompare(b.id);
+            }
+            return result;
+        });
     }
 };

@@ -245,5 +245,69 @@ describe("Absorb.GroceryCo.Checkout.Basket", function() {
                 });
             });
         });
+
+        describe("when passed multiple products and basket items", function() {
+            beforeEach(function() {
+                // Note that the sort orders of the IDs
+                // are oppostie of the names
+                this.aId = "y-id";
+                this.bId = "x-id";
+                this.constructData = () => {
+                    this.inventoryData = {
+                        products: [
+                            {
+                                id: this.bId,
+                                name: this.bName
+                            },
+                            {
+                                id: this.aId,
+                                name: this.aName
+                            }
+                        ]
+                    };
+                    this.promotionData = {
+                        promotions: []
+                    };
+                    this.basketData = {
+                        basket: [
+                            {
+                                productId: this.bId
+                            },
+                            {
+                                productId: this.aId
+                            }
+                        ]
+                    };
+                };
+            });
+
+            describe("with unique names", function() {
+                beforeEach(function() {
+                    this.aName = "A";
+                    this.bName = "B";
+                    this.constructData();
+                    this.load();
+                });
+
+                it("sorts the items by name", function(){
+                    const names = this.instance.items.map((item)=>item.name);
+                    expect(names).toEqual([this.aName, this.bName]);
+                });
+            });
+
+            describe("with identical names", function() {
+                beforeEach(function() {
+                    this.aName = "A";
+                    this.bName = this.aName;
+                    this.constructData();
+                    this.load();
+                });
+
+                it("sorts the items by od", function(){
+                    const names = this.instance.items.map((item)=>item.id);
+                    expect(names).toEqual([this.bId, this.aId]);
+                });
+            });
+        });
     });
 });
