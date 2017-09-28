@@ -39,3 +39,8 @@ Tests
 -----
 
 There is an extensive test suite which illustrates my style & philosophy of testing. The test suite is written in Jasmine; you can run the suite by loading [spec/tests.html][./spec/tests.html]. (Note: unlike the main application, you can successfully load this page directly from the filesystem. You can also deploy the `spec` directory alongside the `src` directory to your web server and run it from there.)
+
+Contact
+-------
+
+If you have any questions or comments, please feel free to email me: craig (at) softcraft.ca.
