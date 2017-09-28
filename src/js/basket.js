@@ -114,4 +114,22 @@ Absorb.GroceryCo.Checkout.Basket = class {
             return result;
         });
     }
+
+    subtotal() {
+        return this.items.reduce((total, item) => {
+            if (item.subtotal == null) {
+                return total;
+            }
+            return total + item.subtotal;
+        }, 0);
+    }
+
+    discount() {
+        return this.items.reduce((discount, item) => {
+            if (item.appliedPromotion == null) {
+                return discount;
+            }
+            return discount + item.appliedPromotion.discount;
+        }, 0);
+    }
 };

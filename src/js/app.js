@@ -16,7 +16,7 @@ Absorb.GroceryCo.Checkout.Application = {
                 });
                 
                 const $container = document.getElementById("receipt-display");
-                const receipt = new Absorb.GroceryCo.Checkout.Views.Receipt(basket.items);
+                const receipt = new Absorb.GroceryCo.Checkout.Views.Receipt(basket);
                 $container.appendChild(receipt.render());
             });
     }

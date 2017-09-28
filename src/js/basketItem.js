@@ -7,7 +7,7 @@ Absorb.GroceryCo.Checkout.BasketItem = class {
         this.quantityListeners = [];
         this.inventory = inventory;
 
-        var _quantity = quantity;
+        var _quantity;
 
         // Quantity is the only place in the app where the state changes.
         // I need a way to reflect state changes in the UI representation.
@@ -22,20 +22,24 @@ Absorb.GroceryCo.Checkout.BasketItem = class {
             },
             set: (value) => {
                 _quantity = value;
+                this.calculateSubtotal();
+                this.applyPromotion();
                 this.quantityListeners.forEach((listener) => {
                     listener(this);
                 });
             }
         });
+        this.quantity = quantity;
     }
 
     addQuantityListener(listener) {
         this.quantityListeners.push(listener);
     }
 
-    appliedPromotion() {
+    applyPromotion() {
         if (!this.validQuantity()) {
-            return null;
+            this.appliedPromotion = null;
+            return;
         }
         const best = this.promotions.reduce((contender, promotion) => {
             const discount = promotion.calculateDiscount(this.quantity, this.price);
@@ -58,14 +62,17 @@ Absorb.GroceryCo.Checkout.BasketItem = class {
             }
             return contender;
         }, null);
-        return best;
+        this.appliedPromotion = best;
+        return this.appliedPromotion;
     }
 
-    subtotal() {
+    calculateSubtotal() {
         if (this.validQuantity()) {
-            return this.price * this.quantity;
+            this.subtotal = this.price * this.quantity;
+        } else {
+            this.subtotal = null;
         }
-        return null;
+        return this.subtotal;
     }
 
     validQuantity() {
