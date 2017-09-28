@@ -28,7 +28,7 @@ I've written extensive notes throughout the project. They're stored in files nam
 
 * [Root](./notes.md)
 * [spec/js](./spec/js/notes.md)
-* [src/api/customer/_customerId](./src/api/customer/_customerId_/notes.md)
+* [src/api/customer/_customerId_](./src/api/customer/_customerId_/notes.md)
 * [src/api](./src/api/notes.md)
 * [src/js](./src/js/notes.md)
 * [src/js/promotion](./src/js/promotions/notes.md)
