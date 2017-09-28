@@ -26,7 +26,6 @@ Absorb.GroceryCo.Checkout.Views.BasketItemEditor = class {
             this.$el = document.createElement("div");
             this.$el.classList.add("basket-item", "vm05");
 
-            this.renderName(this.$el);
             this.renderControls(this.$el);
             this.renderMessage(this.$el);
             this.validateQuantity(this.basketItem.quantity);
@@ -57,6 +56,7 @@ Absorb.GroceryCo.Checkout.Views.BasketItemEditor = class {
         $container.appendChild($controls);
         $controls.classList.add("controls");
         
+        this.renderName($controls);
         this.renderQuantity($controls);
         this.renderButtons($controls);
     }

@@ -63,12 +63,6 @@ h1 {
     padding: 1rem;
 }
 
-.basket-item {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-}
-
 .basket-item input,
 .basket-item button {
     margin-right: 0.5rem;
@@ -122,6 +116,7 @@ h1 {
 
 .basket-item .controls {
     display: flex;
+    align-items: center;
     flex-wrap: wrap;
 }
 
