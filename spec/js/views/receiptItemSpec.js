@@ -1,26 +1,29 @@
 describe("Absorb.GroceryCo.Checkout.Views.ReceiptItem", function() {
     beforeEach(function() {
         this.instance = new Absorb.GroceryCo.Checkout.Views.ReceiptItem();
+        this.productId = "test-item-id";
+        this.productName = "Test Name";
+        this.productPrice = 3;
+        this.productPromotions = [];
+        this.productQuantity = 5;
+        this.quantity = 0;
+
+        this.createBasketItem = () => {
+            this.basketItem = new Absorb.GroceryCo.Checkout.BasketItem(
+                this.productId,
+                this.productName,
+                this.productPrice,
+                this.productPromotions,
+                this.quantity,
+                this.productQuantity
+            );
+        };
     });
 
     describe("render()", function() {
         beforeEach(function() {
-            this.productId = "test-item-id";
-            this.productName = "Test Name";
-            this.productPrice = 3;
-            this.productPromotions = [];
-            this.productQuantity = 5;
-            this.quantity = 0;
-
             this.render = () => {
-                this.basketItem = new Absorb.GroceryCo.Checkout.BasketItem(
-                    this.productId,
-                    this.productName,
-                    this.productPrice,
-                    this.productPromotions,
-                    this.quantity,
-                    this.productQuantity
-                );
+                this.createBasketItem();
                 this.result = this.instance.render(this.basketItem);
             };
         });
@@ -63,9 +66,6 @@ describe("Absorb.GroceryCo.Checkout.Views.ReceiptItem", function() {
             describe("when the quantity is zero", function() {
                 beforeEach(function() {
                     this.quantity = 0;
-                    this.basketItem = {
-                        quantity: this.quantity
-                    };
                     this.render();
                 });
 
@@ -85,9 +85,7 @@ describe("Absorb.GroceryCo.Checkout.Views.ReceiptItem", function() {
             describe("when the quantity is nonzero", function() {
                 beforeEach(function() {
                     this.quantity = 1;
-                    this.basketItem = {
-                        quantity: this.quantity
-                    };
+
                     spyOn(this.instance, "renderRegularItem");
                     spyOn(this.instance, "renderPromotion");
                     this.render();
@@ -198,11 +196,8 @@ describe("Absorb.GroceryCo.Checkout.Views.ReceiptItem", function() {
                     discount: this.discount,
                     promotion: this.promotion
                 };
-                this.basketItem = {
-                    appliedPromotion: () => {
-                        return this.promotionDescriptor;
-                    }
-                };
+                this.createBasketItem();
+                this.basketItem.appliedPromotion = this.promotionDescriptor;
                 spyOn(this.instance, "renderPromotionName");
                 spyOn(this.instance, "renderPromotionDescription");
                 spyOn(this.instance, "renderDiscount");
@@ -241,11 +236,8 @@ describe("Absorb.GroceryCo.Checkout.Views.ReceiptItem", function() {
 
         describe("when there is no promotion applied", function() {
             beforeEach(function() {
-                this.basketItem = {
-                    appliedPromotion() {
-                        return null;
-                    }
-                };
+                this.createBasketItem();
+                this.basketItem.appliedPromotion = null;
                 this.renderPromotion();
             });
             it("adds no children", function() {
@@ -259,7 +251,7 @@ describe("Absorb.GroceryCo.Checkout.Views.ReceiptItem", function() {
             this.$container = document.createElement("div");
             this.description = "Test Description";
             this.promotion = {
-                describe: ()=>{
+                describe: () => {
                     return this.description;
                 }
             };
@@ -314,17 +306,7 @@ describe("Absorb.GroceryCo.Checkout.Views.ReceiptItem", function() {
         beforeEach(function() {
             this.$container = document.createElement("div");
             this.name = "Test Name";
-            this.quantity = 5;
-            this.price = 7;
-            this.subtotal = 11;
-            this.basketItem = {
-                name: this.name,
-                price: this.price,
-                quantity: this.quantity,
-                subtotal: () => {
-                    return this.subtotal;
-                }
-            };
+            this.createBasketItem();
             spyOn(this.instance, "renderName");
             spyOn(this.instance, "renderRegularPrice");
             spyOn(this.instance, "renderRegularTotal");
@@ -347,7 +329,7 @@ describe("Absorb.GroceryCo.Checkout.Views.ReceiptItem", function() {
             it("has the regular class", function() {
                 expect(this.subject).toHaveCssClass("regular");
             });
-            
+
             it("renders the name", function() {
                 expect(this.instance.renderName).toHaveBeenCalledWith(
                     this.subject,
@@ -358,15 +340,15 @@ describe("Absorb.GroceryCo.Checkout.Views.ReceiptItem", function() {
             it("renders the regular price", function() {
                 expect(this.instance.renderRegularPrice).toHaveBeenCalledWith(
                     this.subject,
-                    this.price,
-                    this.quantity
+                    this.basketItem.price,
+                    this.basketItem.quantity
                 );
             });
 
             it("renders the total", function() {
                 expect(this.instance.renderRegularTotal).toHaveBeenCalledWith(
                     this.subject,
-                    this.subtotal
+                    this.basketItem.subtotal
                 );
             });
         });
