@@ -227,10 +227,10 @@ describe("Absorb.GroceryCo.Checkout.BasketItem", function() {
         });
     });
 
-    describe("subtotal()", function() {
+    describe(".subtotal", function() {
         beforeEach(function() {
             this.instantiate();
-            this.result = this.instance.subtotal();
+            this.result = this.instance.subtotal;
         });
 
         it("returns the price times the quantity", function() {
