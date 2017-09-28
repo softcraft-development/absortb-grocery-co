@@ -9,6 +9,7 @@ body {
     align-items: center;
     align-content: center;
     height: 100%;
+    color: black;
 }
 
 h1, h2, h3 {
@@ -17,4 +18,13 @@ h1, h2, h3 {
 
 h1 {
     font-size: 3rem;
+    margin-top: 0;
+}
+
+#page-content {
+    border: 1px solid #666666;
+    border-radius: 1rem;
+    box-shadow: 0.3rem 0.3rem 1rem 0 #dddddd;
+    margin: 1rem;
+    padding: 3rem;
 }
