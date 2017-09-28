@@ -78,7 +78,8 @@ h1 {
 .basket-item .controls button {
     background: none;
     border-radius: 0.25rem;
-    border-width: 2px solid;
+    border-width: 2px;
+    border-style:  solid;
     box-shadow: 4px 3px 5px 0 hsla(0, 0%, 0%, 0.05);
     font-size: inherit;
     font-family: inherit;
