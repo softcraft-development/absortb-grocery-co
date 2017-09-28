@@ -40,3 +40,13 @@ h1 {
     margin: auto;
     padding: 3rem;
 }
+
+.vm2 {
+    margin-top: 2rem;
+}
+
+.sectioned {
+    border: 1px solid hsla(0, 0%, 0%, 0.2);
+    border-radius: 0.5rem;
+    padding: 1rem;
+}
