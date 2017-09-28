@@ -3,7 +3,7 @@ Absorb.GroceryCo.Checkout.formatPrice = function(price) {
     // a real-world app.
     return price.toLocaleString(navigator.language, {
         style: "currency",
-        currency: "CAD",
+        currency: "USD",
         minimumFractionDigits: 2
     });
 };

@@ -13,7 +13,7 @@ describe("Absorb.GroceryCo.Checkout.formatPrice", function() {
     it("passes the formatting settings to", function(){
         expect(this.result).toEqual(this.value.toLocaleString(navigator.language, {
             style: "currency",
-            currency: "CAD",
+            currency: "USD",
             minimumFractionDigits: 2
         }));
     });
