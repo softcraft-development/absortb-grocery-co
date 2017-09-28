@@ -9,7 +9,6 @@ body {
     display: flex;
     font-family: 'Open Sans', sans-serif;
     font-weight: 300;
-    height: 100%;
     margin: 0;
 }
 
@@ -39,8 +38,14 @@ h1 {
     border: 3px solid hsl(156, 50%, 30%);
     border-radius: 1rem;
     box-shadow: 0.4rem 0.3rem 1rem 0 hsla(0, 0%, 0%, 0.1);
-    margin: auto;
+    margin: 1rem;
     padding: 3rem;
+}
+
+@media (min-width: 800px) {
+    #page-content {
+        margin: 5rem auto 1rem auto;
+    }
 }
 
 .vm05 {
