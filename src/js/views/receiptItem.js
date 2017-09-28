@@ -40,15 +40,14 @@ Absorb.GroceryCo.Checkout.Views.ReceiptItem = class {
     }
 
     renderPromotion($container, basketItem) {
-        const descriptor = basketItem.appliedPromotion();
-        if (descriptor != null) {
+        if (basketItem.appliedPromotion != null) {
             const $promotion = document.createElement("div");
             $container.appendChild($promotion);
             $promotion.classList.add("promotion", "receipt-line");
 
             this.renderPromotionName($promotion);
-            this.renderPromotionDescription($promotion, descriptor.promotion);
-            this.renderDiscount($promotion, descriptor.discount);
+            this.renderPromotionDescription($promotion, basketItem.appliedPromotion.promotion);
+            this.renderDiscount($promotion, basketItem.appliedPromotion.discount);
         }
     }
 
@@ -73,7 +72,7 @@ Absorb.GroceryCo.Checkout.Views.ReceiptItem = class {
 
         this.renderName($regularItem, basketItem.name);
         this.renderRegularPrice($regularItem, basketItem.price, basketItem.quantity);
-        this.renderRegularTotal($regularItem, basketItem.subtotal());
+        this.renderRegularTotal($regularItem, basketItem.subtotal);
     }
 
     renderRegularPrice($container, price, quantity) {
