@@ -5,16 +5,22 @@ describe("Absorb.GroceryCo.Checkout.Views.ReceiptItem", function() {
 
     describe("render()", function() {
         beforeEach(function() {
+            this.productId = "test-item-id";
+            this.productName = "Test Name";
+            this.productPrice = 3;
+            this.productPromotions = [];
+            this.productQuantity = 5;
             this.quantity = 0;
-            this.basketItem = new Absorb.GroceryCo.Checkout.BasketItem(
-                "test-item-id",
-                "Test Name",
-                3,
-                [],
-                this.quantity,
-                5
-            );
+
             this.render = () => {
+                this.basketItem = new Absorb.GroceryCo.Checkout.BasketItem(
+                    this.productId,
+                    this.productName,
+                    this.productPrice,
+                    this.productPromotions,
+                    this.quantity,
+                    this.productQuantity
+                );
                 this.result = this.instance.render(this.basketItem);
             };
         });
