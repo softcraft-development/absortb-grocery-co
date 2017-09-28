@@ -34,6 +34,9 @@ Absorb.GroceryCo.Checkout.BasketItem = class {
     }
 
     appliedPromotion() {
+        if (!this.validQuantity()) {
+            return null;
+        }
         const best = this.promotions.reduce((contender, promotion) => {
             const discount = promotion.calculateDiscount(this.quantity, this.price);
 
@@ -59,30 +62,22 @@ Absorb.GroceryCo.Checkout.BasketItem = class {
     }
 
     subtotal() {
-        return this.price * this.quantity;
+        if (this.validQuantity()) {
+            return this.price * this.quantity;
+        }
+        return null;
     }
 
-    validateQuantity(raw) {
-        // It's not explicitly stated anywhere in the specs whether we are allowing
-        // fractional quantities. It's implied via the given examples and the add/remove
-        // buttons that quantities should be discrete/integers. However, it's not
-        // good to assume that (the quantities for fruit could very well be weights
-        // after all). This would require some clarification of the specs. In the meantime,
-        // I'm going to assume fractional quantities are fine; that makes for
-        // simpler code as I don't have to try to detect & handle unaccepted decimal values.
-
-        const result = {
-            quantity: null,
-            raw,
-        };
-
-        if (typeof raw === "number") {
-            result.quantity = raw;
-        } else {
-            raw = String(raw).trim();
-            result.quantity = Number.parseFloat(raw);
+    validQuantity() {
+        if (this.quantity == null) {
+            return false;
         }
-
-        return result;
+        if (this.quantity <= 0) {
+            return false;
+        }
+        if (this.quantity > this.inventory) {
+            return false;
+        }
+        return true;
     }
 };
